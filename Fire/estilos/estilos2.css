@@ -9,7 +9,7 @@
 }
 
 #imPre{
-    background-image: url(imagenes/mapaPrediccionjpg.jpg);
+    background-image: url(../imagenes/mapaPrediccionjpg.jpg);
     height: 470px;
     width:  570px;
     background-size: cover; 

@@ -53,7 +53,7 @@ body {
     width: 100%;
 }
 #portada {
-    background-image: url(imagenes/fire.jpg);
+    background-image: url(../imagenes/fire.jpg);
     height: 300px;
     background-size: cover; 
     background-position: center; 
@@ -80,7 +80,7 @@ body {
 }
 
 #im1{
-    background-image: url(imagenes/p1jpg.jpg);
+    background-image: url(../imagenes/p1jpg.jpg);
     height: 180px;
     width:  250px;
     background-size: cover; 
@@ -90,7 +90,7 @@ body {
 }
 
 #im2{
-    background-image: url(imagenes/p2.jpg);
+    background-image: url(../imagenes/p2.jpg);
     height: 180px;
     width:  250px;
     background-size: cover; 
@@ -102,7 +102,7 @@ body {
 }
 
 #im3{
-    background-image: url(imagenes/p3.jpg);
+    background-image: url(../imagenes/p3.jpg);
     height: 180px;
     width:  250px;
     background-size: cover; 

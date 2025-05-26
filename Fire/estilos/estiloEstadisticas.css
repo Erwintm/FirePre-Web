@@ -13,7 +13,7 @@
 }
     
 #im1{
-    background-image: url(imagenes/causas.png);
+    background-image: url(../imagenes/causas.png);
     height: 270px;
     width:  470px;
     background-size: cover; 
@@ -24,7 +24,7 @@
 
 
 #im2{
-    background-image: url(imagenes/Impactos.png);
+    background-image: url(../imagenes/Impactos.png);
     height: 270px;
     width:  470px;
     
@@ -35,7 +35,7 @@
 }
 
 #im3{
-    background-image: url(imagenes/zonas.png);
+    background-image: url(../imagenes/zonas.png);
     height: 270px;
     width:  470px;
     background-size: cover; 
@@ -45,7 +45,7 @@
 }
 
 #im4{
-    background-image: url(imagenes/niveles.png);
+    background-image: url(../imagenes/niveles.png);
     
     height: 270px;
     width:  470px;
