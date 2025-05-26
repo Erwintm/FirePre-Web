@@ -27,7 +27,41 @@
             </div>
             <div></div>
             <div>
-                
+                <label for="txtEmail">Email</label>
+                <input type="email" minlength="10" maxlength="40" require>
+            </div>
+            <div></div>
+            <div>
+                <label for="txtContrasena">Contraseña</label>
+                <input type="password" minlength="8" maxlength="25" require>
+            </div>
+            <div></div>
+            <div>
+                <fieldset class="col-6">
+                <legend>Sexo</legend>
+                <div class="form-check">
+                    <input type="radio" id="rbtMasculino" class="form-check-input" name="rbtSexo" value="Masculino" required> 
+                    <label for="rbtMasculino" class="form-check-label">Masculino</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="rbtSexo" id="rbtFemenino" class="form-check-input" value="Femenino" required> 
+                    <label class="form-check-label" for="rbtFemenino">Femenino</label>
+                </div>
+            </fieldset>
+            </div>
+            <div></div>
+            <div>
+                <fieldset class="col-6">
+                <legend>Tipo usuario</legend>
+                <div class="form-check">
+                    <input type="radio" id="rbtAdmin" class="form-check-input" name="rbtTipo" value="administrador" required> 
+                    <label for="rbtAdmin" class="form-check-label">Administrador</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="rbtTipo" id="rbtMormal" class="form-check-input" value="normal" required> 
+                    <label class="form-check-label" for="rbtNormal">Normal</label>
+                </div>
+            </fieldset>
             </div>
         </div>
     </form>
