@@ -3,10 +3,11 @@
     public $id=0;
     public $nombre="";
     public $apellidos="";
-    public $email="";
     public $password="";
-    public $tipo=1;
+    public $edad=0;
+    public $gmail="";
     public $sexo="";
+    public $super="";
 
 }
 ?>
