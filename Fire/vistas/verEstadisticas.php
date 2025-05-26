@@ -27,7 +27,7 @@
 
     <div id="cabeza">
         <form >
-        <button class="btn btn-primary" formaction="inicio.html">Regresar</button>
+        <button class="btn btn-primary" formaction="index.php">Regresar</button>
     </form>
     </div>
     

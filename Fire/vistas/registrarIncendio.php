@@ -106,7 +106,7 @@
     </div>
 
     <div class="col-6">
-        <button class="btn btn-primary" type="button" onclick="window.location.href='inicio.html'">Regresar</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='index.php'">Regresar</button>
     </div>
 
 </form>

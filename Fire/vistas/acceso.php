@@ -24,10 +24,10 @@
                 <input type="password" id="txtContrasena">
             </div>
             <div class="col-9">
-                <button class="btn btn-primary" type="submit" formaction="inicio.html">Iniciar</button>
+                <button class="btn btn-primary" type="submit" formaction="index.php">Iniciar</button>
             </div>
             <div class="col-9">
-                <button class="btn btn-primary" type="submit" formaction="registro.html">Registro</button>
+                <button class="btn btn-primary" type="submit" formaction="registro.php">Registro</button>
             </div>
         </div>
     </form>

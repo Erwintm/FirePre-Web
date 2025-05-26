@@ -28,7 +28,7 @@
                 <input type="text" id="txtContrasena">
             </div>
             <div class="col-9">
-                <button class="btn btn-primary" type="submit" formaction="acceso.html">Registrar</button>
+                <button class="btn btn-primary" type="submit" formaction="acceso.php">Registrar</button>
             </div>
         </div>
     </form>

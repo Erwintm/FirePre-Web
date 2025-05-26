@@ -15,22 +15,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="infoSoft.html">Información del software</a>
+          <a class="nav-link active" aria-current="page" href="infoSoft.php">Información del software</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="registrarIncendio.html">Registro de incendios</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link active" aria-disabled="true" href="verEstadisticas.html">Ver estadisticas</a>
+          <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="verPredicciones.html">Ver predicciones</a>
+          <a class="nav-link active" aria-disabled="true" href="verEstadisticas.php">Ver estadisticas</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active" aria-disabled="true" href="verPredicciones.php">Ver predicciones</a>
         </li>
     
         <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.html">Acceso</button>
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Acceso</button>
         </form>
       </ul>
       
