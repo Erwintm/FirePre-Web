@@ -11,8 +11,20 @@
     <form action="">
         <Legend>Registro usuario</Legend>
         <div>
-            <label for="txtNombre">Nombre</label>
-            <input type="text" id="txtNombre" minlength="2" maxlength="30" require>
+            <div>
+                <label for="txtNombre">Nombre</label>
+                <input type="text" id="txtNombre" minlength="2" maxlength="30" require>
+            </div>
+            <div></div>
+            <div>
+                <label for="txtApellidos">Apellidos</label>
+                <input type="text" id="txtApellidos"  require>
+            </div>
+            <div></div>
+            <div>
+                <label for="txtEdad">Edad</label>
+                <input type="number" min="13" max="100" require>
+            </div>
         </div>
     </form>
 </body>
