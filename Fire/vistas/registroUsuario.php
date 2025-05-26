@@ -25,6 +25,10 @@
                 <label for="txtEdad">Edad</label>
                 <input type="number" min="13" max="100" require>
             </div>
+            <div></div>
+            <div>
+                
+            </div>
         </div>
     </form>
 </body>
