@@ -1,0 +1,52 @@
+.info{
+    background-color: rgb(177, 175, 175);
+}
+
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#imPre{
+    background-image: url(imagenes/mapaPrediccionjpg.jpg);
+    height: 470px;
+    width:  570px;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+
+}
+
+#prediccion{
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#significado ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: disc;
+}
+
+#rojo{
+    background-color: rgb(233, 71, 71);
+}
+
+#amarillo{
+    background-color: rgb(197, 197, 41);
+}
+
+#verde{
+    background-color: rgb(29, 176, 29);
+}
+
+#azul{
+    background-color: rgb(19, 228, 228);
+}
+
+#naranja{
+    background-color: orange;
+}
