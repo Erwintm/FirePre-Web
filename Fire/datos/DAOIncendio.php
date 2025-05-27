@@ -80,8 +80,49 @@
             }
         }
 
+        public function obtenerTodos()
+        {
+            try {
+                $this->conectar();
 
+                $lista = array();
+
+                $sql = "SELECT id, fecha, temperatura, velocidadviento, elevacion,
+                            latitud, longitud, tipovegetacion, causas, idzona,
+                            humedad, precipitacion, distanciaagua
+                        FROM Incendios";
+
+                $sentenciaSQL = $this->conexion->prepare($sql);
+                $sentenciaSQL->execute();
+                $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_OBJ);
+
+                foreach ($resultado as $fila) {
+                    $obj = new Incendio();
+                    $obj->id = $fila->id;
+                    $obj->fecha = $fila->fecha;
+                    $obj->temperatura = $fila->temperatura;
+                    $obj->velocidadviento = $fila->velocidadviento;
+                    $obj->elevacion = $fila->elevacion;
+                    $obj->latitud = $fila->latitud;
+                    $obj->longitud = $fila->longitud;
+                    $obj->tipovegetacion = $fila->tipovegetacion;
+                    $obj->causas = $fila->causas;
+                    $obj->idzona = $fila->idzona;
+                    $obj->humedad = $fila->humedad;
+                    $obj->precipitacion = $fila->precipitacion;
+                    $obj->distanciaagua = $fila->distanciaagua;
+                    $lista[] = $obj;
+            }
+
+            return $lista;
+
+        } catch (PDOException $e) {
+            return null;
+        } finally {
+            Conexion::desconectar();
+        }
     }
+}
 ?>
 
 
