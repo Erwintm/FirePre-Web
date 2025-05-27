@@ -3,16 +3,16 @@
         public $id=0;
         public $fecha="";
         public $temperatura="";
-        public $velocidadviento="";
+        public $velocidad_viento="";
         public $elevacion="";
         public $latitud="";
         public $longitud="";
-        public $tipovegetacion="";
+        public $tipo_vegetacion="";
         public $causas="";
-        public $idzona="";
+        public $id_zona="";
         public $humedad="";
         public $precipitacion="";
-        public $distanciaagua="";
+        public $distancia_agua="";
 
     }
 ?>

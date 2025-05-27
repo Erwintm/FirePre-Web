@@ -9,16 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Asigna los valores desde el formulario
     $incendio->fecha = $_POST['txtFecha'];
     $incendio->temperatura = $_POST['txtTemperatura'];
-    $incendio->velocidadviento = $_POST['txtVelocidadV'];
+    $incendio->velocidad_viento = $_POST['txtVelocidadV'];
     $incendio->elevacion = $_POST['txtElevacion'];
     $incendio->latitud = $_POST['txtLatitud'];
     $incendio->longitud = $_POST['txtLongitud'];
-    $incendio->tipovegetacion = $_POST['txtTipoV'];
+    $incendio->tipo_vegetacion = $_POST['txtTipoV'];
     $incendio->causas = $_POST['txtCausasInce'];
-    $incendio->idzona = $_POST['txtZona'];
+    $incendio->id_zona = $_POST['txtZona'];
     $incendio->humedad = $_POST['txtHumedad'];
     $incendio->precipitacion = $_POST['txtPrecipitacion'];
-    $incendio->distanciaagua = $_POST['txtDistanciaAgua'];
+    $incendio->distancia_agua = $_POST['txtDistanciaAgua'];
 
     // DAO para insertar el registro
     $dao = new DAOIncendio();
