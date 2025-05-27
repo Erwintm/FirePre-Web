@@ -28,7 +28,7 @@
         </li>
     
         <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Acceso</button>
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
         </form>
       </ul>
       

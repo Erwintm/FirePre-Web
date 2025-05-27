@@ -18,7 +18,8 @@
           <a class="nav-link active" aria-current="page" href="infoSoft.php">Información del software</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
+           <a class="nav-link active" aria-disabled="true" href="verPredicciones.php">Ver predicciones</a>
+         
         </li>
         
         <li class="nav-item">
@@ -26,13 +27,16 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="verPredicciones.php">Ver predicciones</a>
+            <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link active" aria-disabled="true" href="registroUsuario.php">Registrar Usuarios</a>
         </li>
     
+        <form action="">
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
+        </form>
         
       </ul>
       

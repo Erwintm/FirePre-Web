@@ -57,7 +57,7 @@
             </div>
             <div class="mb-3 d-flex gap-2">
                 <button class="btn btn-primary" type="submit">Iniciar</button>
-                <a href="registro.php" class="btn btn-secondary">Registro</a>
+              
             </div>
         </form>
     </div>
