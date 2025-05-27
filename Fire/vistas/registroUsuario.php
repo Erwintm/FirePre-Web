@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -12,119 +12,134 @@
 
 <body class="fondo">
     <?php
-    $errores = [];
+    session_start();
+    require_once '../modelos/usuario.php';
+    require_once '../datos/DAOUsuario.php';
 
-    // Validar nombre
-    if (empty($_POST['txtNombre']) || strlen($_POST['txtNombre']) < 2 || strlen($_POST['txtNombre']) > 30) {
-        $errores[] = "El nombre es obligatorio y debe tener entre 2 y 30 caracteres.";
-    }
-
-    // Validar apellidos
-    if (empty($_POST['txtApellidos'])) {
-        $errores[] = "Los apellidos son obligatorios.";
-    }
-
-    // Validar edad
-    if (!isset($_POST['txtEdad']) || $_POST['txtEdad'] < 13 || $_POST['txtEdad'] > 100) {
-        $errores[] = "La edad debe estar entre 13 y 100 años.";
-    }
-
-    // Validar email
-    if (empty($_POST['txtEmail']) || !filter_var($_POST['txtEmail'], FILTER_VALIDATE_EMAIL)) {
-        $errores[] = "El email no es válido.";
-    }
-
-    // Validar contraseña
-    if (empty($_POST['txtContrasena']) || strlen($_POST['txtContrasena']) < 8 || strlen($_POST['txtContrasena']) > 25) {
-        $errores[] = "La contraseña debe tener entre 8 y 25 caracteres.";
-    }
-
-    // Validar sexo
-    if (!isset($_POST['rbtSexo'])) {
-        $errores[] = "Debe seleccionar un sexo.";
-    }
-
-    // Validar tipo de usuario
-    if (!isset($_POST['rbtTipo'])) {
-        $errores[] = "Debe seleccionar un tipo de usuario.";
-    }
-
-    // Mostrar resultados
-    if (count($errores) > 0) {
-        echo "<h4>Errores encontrados:</h4><ul>";
-        foreach ($errores as $error) {
-            echo "<li>$error</li>";
+    function validarCadena($cadena, $min, $max, $campo)
+    {
+        $cadena = trim($cadena);
+        if (strlen($cadena) >= $min && strlen($cadena) <= $max) {
+            return '';
+        } else {
+            return "El campo $campo debe tener entre $min y $max caracteres.<br>";
         }
-        echo "</ul>";
-        echo '<a href="javascript:history.back()">Volver</a>';
-    } else {
-        // Aquí podrías guardar en base de datos o mostrar un mensaje de éxito
-        echo "<h4>Registro exitoso</h4>";
-        // También puedes redirigir con: header("Location: paginaExito.php");
+    }
+
+    $error = '';
+    $usuario = new Usuario();
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $usuario->nombre     = trim($_POST["txtNombre"] ?? '');
+        $usuario->apellidos  = trim($_POST["txtApellidos"] ?? '');
+        $usuario->edad       = (int) ($_POST["txtEdad"] ?? 0);
+        $usuario->gmail      = trim($_POST["txtEmail"] ?? '');
+        $usuario->password   = $_POST["txtContrasena"] ?? '';
+        $usuario->sexo       = $_POST["rbtSexo"] ?? '';
+        $usuario->super      = $_POST["rbtTipo"] ?? '';
+
+        // Validaciones
+        $error .= validarCadena($usuario->nombre, 3, 30, "Nombre");
+        $error .= validarCadena($usuario->apellidos, 3, 30, "Apellidos");
+
+        if ($usuario->edad < 13 || $usuario->edad > 100) {
+            $error .= "La edad debe estar entre 13 y 100 años.<br>";
+        }
+
+        if (!filter_var($usuario->gmail, FILTER_VALIDATE_EMAIL)) {
+            $error .= "El correo electrónico no es válido.<br>";
+        }
+
+        if (strlen($usuario->password) < 8 || strlen($usuario->password) > 25) {
+            $error .= "La contraseña debe tener entre 8 y 25 caracteres.<br>";
+        }
+
+        if (!in_array($usuario->sexo, ['Masculino', 'Femenino'])) {
+            $error .= "Sexo inválido.<br>";
+        }
+
+        if (!in_array($usuario->super, ['administrador', 'normal'])) {
+            $error .= "Tipo de usuario inválido.<br>";
+        }
+
+        // Procesamiento si no hay errores
+        if (empty($error)) {
+            $dao = new DAOUsuario();
+            if ($dao->agregar($usuario) > 0) {
+                $_SESSION["msg"] = "alert-success--Usuario almacenado correctamente";
+                header("Location: listaUsuarios.php");
+                exit;
+            } else {
+                $error = '<div class="alert alert-danger">Error al guardar el usuario</div>';
+            }
+        }
     }
     ?>
 
     <div class="container pt-4">
-        <form id="frmRegistro" novalidate method="post" action="registroUsuarios.php">
+        <?php if (!empty($error)) : ?>
+            <div class="alert alert-warning"><?= $error ?></div>
+        <?php endif; ?>
+
+        <form id="frmRegistro" method="post" action="registroUsuarios.php" novalidate>
             <div class="row">
                 <legend class="mb-4">Registro usuario</legend>
 
                 <div class="mb-3 col-md-4">
                     <label for="txtNombre" class="form-label">Nombre</label>
-                    <input type="text" id="txtNombre" class="form-control" minlength="2" maxlength="30" required>
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" minlength="2" maxlength="30" required>
                 </div>
-
+                <div id="menNom"></div>
                 <div class="mb-3 col-md-4">
                     <label for="txtApellidos" class="form-label">Apellidos</label>
-                    <input type="text" id="txtApellidos" class="form-control" required>
+                    <input type="text" id="txtApellidos" name="txtApellidos" class="form-control" required>
                 </div>
-
+                <div id="menApe"></div>
                 <div class="mb-3 col-md-4">
                     <label for="txtEdad" class="form-label">Edad</label>
-                    <input type="number" id="txtEdad" class="form-control" min="13" max="100" required>
+                    <input type="number" id="txtEdad" name="txtEdad" class="form-control" min="13" max="100" required>
                 </div>
-
+                <div id="menEdad"></div>
                 <div class="mb-3 col-6">
                     <label for="txtEmail" class="form-label">Email</label>
-                    <input type="email" id="txtEmail" class="form-control" minlength="10" maxlength="40" required>
+                    <input type="email" id="txtEmail" name="txtEmail" class="form-control" minlength="10" maxlength="40" required>
                 </div>
-
+                <div id="menEmail"></div>
                 <div class="mb-3 col-md-6">
                     <label for="txtContrasena" class="form-label">Contraseña</label>
-                    <input type="password" id="txtContrasena" class="form-control" minlength="8" maxlength="25" required>
+                    <input type="password" id="txtContrasena" name="txtContrasena" class="form-control" minlength="8" maxlength="25" required>
                 </div>
-
+                <div id="menPass"></div>
                 <!-- Campo Sexo -->
                 <div class="mb-3 col-md-6">
                     <fieldset class="border rounded p-3">
                         <legend class="fs-6">Sexo</legend>
                         <div class="form-check">
-                            <input type="radio" id="rbtMasculino" class="form-check-input" name="rbtSexo" value="Masculino" required>
+                            <input type="radio" id="rbtMasculino" name="rbtSexo" value="Masculino" class="form-check-input" required>
                             <label for="rbtMasculino" class="form-check-label">Masculino</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="rbtFemenino" class="form-check-input" name="rbtSexo" value="Femenino" required>
+                            <input type="radio" id="rbtFemenino" name="rbtSexo" value="Femenino" class="form-check-input" required>
                             <label for="rbtFemenino" class="form-check-label">Femenino</label>
                         </div>
                     </fieldset>
                 </div>
-
+                <div id="menSexo"></div>
                 <!-- Campo Tipo de Usuario -->
                 <div class="mb-3 col-md-6">
                     <fieldset class="border rounded p-3">
                         <legend class="fs-6">Tipo usuario</legend>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="rbtAdmin" class="form-check-input" name="rbtTipo" value="administrador" required>
+                            <input type="radio" id="rbtAdmin" name="rbtTipo" value="administrador" class="form-check-input" required>
                             <label for="rbtAdmin" class="form-check-label">Administrador</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="rbtNormal" class="form-check-input" name="rbtTipo" value="normal" required>
+                            <input type="radio" id="rbtNormal" name="rbtTipo" value="normal" class="form-check-input" required>
                             <label for="rbtNormal" class="form-check-label">Normal</label>
                         </div>
                     </fieldset>
                 </div>
-
-
+                <div id="menTipo"></div>
                 <div class="col-12 text-center mt-4">
                     <button id="btnRegistrar" type="submit" class="btn btn-primary btn-sm me-2">Registrar</button>
                     <button id="btnRegresar" type="button" onclick="window.history.back()" class="btn btn-secondary btn-sm">Regresar</button>
@@ -132,7 +147,6 @@
             </div>
         </form>
     </div>
-
 
 </body>
 
