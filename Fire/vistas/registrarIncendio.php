@@ -1,16 +1,52 @@
+<?php
+require_once '../modelos/incendio.php';
+require_once '../datos/DAOIncendio.php';
+
+// Verifica si se envió el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $incendio = new Incendio();
+
+    // Asigna los valores desde el formulario
+    $incendio->fecha = $_POST['txtFecha'];
+    $incendio->temperatura = $_POST['txtTemperatura'];
+    $incendio->velocidadviento = $_POST['txtVelocidadV'];
+    $incendio->elevacion = $_POST['txtElevacion'];
+    $incendio->latitud = $_POST['txtLatitud'];
+    $incendio->longitud = $_POST['txtLongitud'];
+    $incendio->tipovegetacion = $_POST['txtTipoV'];
+    $incendio->causas = $_POST['txtCausasInce'];
+    $incendio->idzona = $_POST['txtZona'];
+    $incendio->humedad = $_POST['txtHumedad'];
+    $incendio->precipitacion = $_POST['txtPrecipitacion'];
+    $incendio->distanciaagua = $_POST['txtDistanciaAgua'];
+
+    // DAO para insertar el registro
+    $dao = new DAOIncendio();
+    $resultado = $dao->agregar($incendio);
+
+    // Mostrar mensaje según resultado
+    if ($resultado > 0) {
+        echo "<script>alert('Incendio registrado correctamente'); window.location.href = 'index.php';</script>";
+        exit;
+    } else {
+        echo "<script>alert('Error al registrar el incendio');</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrar Incendio</title>
     <link rel="stylesheet" href="../estilos/estiloRegistrar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    
-    <form id="formIncendio">
+
+<form id="formIncendio" method="POST" action="registrarIncendio.php">
 
     <div class="col-12">
         <legend>Registrar incendio</legend>
@@ -79,7 +115,6 @@
     <div class="col-12">
         <label for="txtTipoV">Tipo de vegetación:</label>
         <select id="txtTipoV" name="txtTipoV" required>
-         
             <option value="bosque">Bosque</option>
             <option value="matorral">Matorral</option>
             <option value="pastizal">Pastizal</option>
@@ -91,7 +126,6 @@
     <div class="col-12">
         <label for="txtCausasInce">Causas del incendio:</label>
         <select id="txtCausasInce" name="txtCausasInce" required>
-            
             <option value="fogata">Fogata</option>
             <option value="rayos">Rayos</option>
             <option value="intencional">Intencional</option>
@@ -101,12 +135,12 @@
         <div id="errorCausas" class="error"></div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 mt-3">
         <button class="btn btn-primary" type="submit">Aceptar</button>
     </div>
 
-    <div class="col-6">
-        <button class="btn btn-primary" type="button" onclick="window.location.href='index.php'">Regresar</button>
+    <div class="col-6 mt-3">
+        <button class="btn btn-secondary" type="button" onclick="window.location.href='index.php'">Regresar</button>
     </div>
 
 </form>
