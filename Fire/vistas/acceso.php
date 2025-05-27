@@ -16,7 +16,7 @@
                 $_SESSION["correo"] = $correo;
                 $_SESSION["super"] = $usuario->super;
 
-                if ($usuario->super) {
+                if ($usuario->super==1) {
                     header("Location: index_privado.php");
                 } else {
                     header("Location: index_publico.php"); 

@@ -4,10 +4,10 @@
     public $nombre="";
     public $apellidos="";
     public $password="";
-    public $edad=0;
+    public $edad="";
     public $gmail="";
     public $sexo="";
-    public $super="";
+    public $super=0;
 
 }
 ?>

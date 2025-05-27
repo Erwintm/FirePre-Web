@@ -12,7 +12,7 @@
 
 <body class="fondo">
     <?php
-    session_start();
+    
     require_once '../modelos/usuario.php';
     require_once '../datos/DAOUsuario.php';
 
@@ -35,8 +35,20 @@
         $usuario->edad       = (int) ($_POST["txtEdad"] ?? 0);
         $usuario->gmail      = trim($_POST["txtEmail"] ?? '');
         $usuario->password   = $_POST["txtContrasena"] ?? '';
-        $usuario->sexo       = $_POST["rbtSexo"] ?? '';
-        $usuario->super      = $_POST["rbtTipo"] ?? '';
+        
+        if($_POST["rbtTipo"]=="normal"){
+            $usuario->super=2;
+        }else if($_POST["rbtTipo"]=="administrador"){
+            $usuario->super=1;
+        }
+       
+
+    
+    if ($_POST["rbtSexo"] == "Masculino") {
+        $usuario->sexo = "Masculino";
+    } elseif ( $_POST["rbtSexo"] == "Femenino") {
+        $usuario->sexo = "Femenino";
+    }
 
         // Validaciones
         $error .= validarCadena($usuario->nombre, 3, 30, "Nombre");
@@ -54,20 +66,15 @@
             $error .= "La contraseña debe tener entre 8 y 25 caracteres.<br>";
         }
 
-        if (!in_array($usuario->sexo, ['Masculino', 'Femenino'])) {
-            $error .= "Sexo inválido.<br>";
-        }
-
-        if (!in_array($usuario->super, ['administrador', 'normal'])) {
-            $error .= "Tipo de usuario inválido.<br>";
-        }
+        
 
         // Procesamiento si no hay errores
         if (empty($error)) {
             $dao = new DAOUsuario();
-            if ($dao->agregar($usuario) > 0) {
+            $resultado = $dao->agregar($usuario);
+            if ($resultado > 0) {
                 $_SESSION["msg"] = "alert-success--Usuario almacenado correctamente";
-                header("Location: listaUsuarios.php");
+                header("Location: index_privado.php");
                 exit;
             } else {
                 $error = '<div class="alert alert-danger">Error al guardar el usuario</div>';
@@ -81,7 +88,7 @@
             <div class="alert alert-warning"><?= $error ?></div>
         <?php endif; ?>
 
-        <form id="frmRegistro" method="post" action="registroUsuarios.php" novalidate>
+        <form id="frmRegistro" method="post" action="registroUsuario.php" novalidate>
             <div class="row">
                 <legend class="mb-4">Registro usuario</legend>
 

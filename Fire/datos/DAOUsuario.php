@@ -181,13 +181,13 @@ public function agregar(Usuario $obj)
         $sql = "INSERT INTO usuario
                     (nombre, apellidos, contraseña, edad, correo, sexo, super)
                 VALUES
-                    (:nombre, :apellidos, sha224(:password), :edad, :correo, :sexo, :super)";
+                    (:nombre, :apellidos, sha224(:passwor), :edad, :correo, :sexo, :super)";
 
         $this->conectar();
         $this->conexion->prepare($sql)->execute([
             ':nombre' => $obj->nombre,
             ':apellidos' => $obj->apellidos,
-            ':password' => $obj->password,
+            ':passwor' => $obj->password,
             ':edad' => $obj->edad,
             ':correo' => $obj->gmail,
             ':sexo' => $obj->sexo,
