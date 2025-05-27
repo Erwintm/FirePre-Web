@@ -60,11 +60,11 @@
                 <div lass="mb-2 col-6">
                     <fieldset class="col-12 border rounded p-3 mb-2">
                         <legend>Tipo usuario</legend>
-                        <div class="form-check">
+                        <div class="form-check form-check-inline">
                             <input type="radio" id="rbtAdmin" class="form-check-input" name="rbtTipo" value="administrador" required>
                             <label for="rbtAdmin" class="form-check-label">Administrador</label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check form-check-inline"">
                             <input type="radio" name="rbtTipo" id="rbtMormal" class="form-check-input" value="normal" required>
                             <label class="form-check-label" for="rbtNormal">Normal</label>
                         </div>
