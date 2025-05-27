@@ -97,8 +97,111 @@ public function obtenerTodos()
     }
 }
 
+public function obtenerUno($id)
+{
+    try {
+        $this->conectar();
+        $obj = null;
 
+        $sentenciaSQL = $this->conexion->prepare("SELECT id, nombre, apellidos, contraseña, edad, correo, sexo, super FROM usuario WHERE id = ?");
+        $sentenciaSQL->execute([$id]);
+        $fila = $sentenciaSQL->fetch(PDO::FETCH_OBJ);
 
+        if ($fila) {
+            $obj = new Usuario();
+            $obj->id = $fila->id;
+            $obj->nombre = $fila->nombre;
+            $obj->apellidos = $fila->apellidos;
+            $obj->password = $fila->contraseña;
+            $obj->edad = $fila->edad;
+            $obj->gmail = $fila->correo;
+            $obj->sexo = $fila->sexo;
+            $obj->super = $fila->super;
+        }
+
+        return $obj;
+    } catch (Exception $e) {
+        return null;
+    } finally {
+        Conexion::desconectar();
+    }
+}
+
+public function eliminar($id)
+{
+    try {
+        $this->conectar();
+        $sentenciaSQL = $this->conexion->prepare("DELETE FROM usuario WHERE id = ?");
+        return $sentenciaSQL->execute([$id]);
+    } catch (PDOException $e) {
+        return false;
+    } finally {
+        Conexion::desconectar();
+    }
+}
+
+public function editar(Usuario $obj)
+{
+    try {
+        $sql = "UPDATE usuario SET
+                    nombre = ?,
+                    apellidos = ?,
+                    contraseña = sha224(?),
+                    edad = ?,
+                    correo = ?,
+                    sexo = ?,
+                    super = ?
+                WHERE id = ?";
+
+        $this->conectar();
+        $sentenciaSQL = $this->conexion->prepare($sql);
+        $sentenciaSQL->execute([
+            $obj->nombre,
+            $obj->apellidos,
+            $obj->password,
+            $obj->edad,
+            $obj->gmail,
+            $obj->sexo,
+            $obj->super,
+            $obj->id
+        ]);
+
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    } finally {
+        Conexion::desconectar();
+    }
+}
+
+public function agregar(Usuario $obj)
+{
+    $clave = 0;
+    try {
+        $sql = "INSERT INTO usuario
+                    (nombre, apellidos, contraseña, edad, correo, sexo, super)
+                VALUES
+                    (:nombre, :apellidos, sha224(:password), :edad, :correo, :sexo, :super)";
+
+        $this->conectar();
+        $this->conexion->prepare($sql)->execute([
+            ':nombre' => $obj->nombre,
+            ':apellidos' => $obj->apellidos,
+            ':password' => $obj->password,
+            ':edad' => $obj->edad,
+            ':correo' => $obj->gmail,
+            ':sexo' => $obj->sexo,
+            ':super' => $obj->super
+        ]);
+
+        $clave = $this->conexion->lastInsertId();
+        return $clave;
+    } catch (Exception $e) {
+        return $clave;
+    } finally {
+        Conexion::desconectar();
+    }
+}
 
 
     //aqui
