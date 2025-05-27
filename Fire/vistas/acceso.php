@@ -17,9 +17,9 @@
                 $_SESSION["super"] = $usuario->super;
 
                 if ($usuario->super) {
-                    header("Location: index.php");
+                    header("Location: index_privado.php");
                 } else {
-                    header("Location: usuario_home.php"); 
+                    header("Location: index_publico.php"); 
                 }
                 exit();
             } else {

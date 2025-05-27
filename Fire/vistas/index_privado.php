@@ -28,10 +28,12 @@
         <li class="nav-item">
             <a class="nav-link active" aria-disabled="true" href="verPredicciones.php">Ver predicciones</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" aria-disabled="true" href="registroUsuario.php">Registrar Usuarios</a>
+        </li>
     
-        <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Acceso</button>
-        </form>
+        
       </ul>
       
     </div>

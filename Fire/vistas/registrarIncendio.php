@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Mostrar mensaje según resultado
     if ($resultado > 0) {
-        echo "<script>alert('Incendio registrado correctamente'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Incendio registrado correctamente'); window.location.href = 'index_privado.php';</script>";
         exit;
     } else {
         echo "<script>alert('Error al registrar el incendio');</script>";
