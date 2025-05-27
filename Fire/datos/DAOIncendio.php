@@ -101,16 +101,16 @@
                     $obj->id = $fila->id;
                     $obj->fecha = $fila->fecha;
                     $obj->temperatura = $fila->temperatura;
-                    $obj->velocidad_viento = $fila->velocidad_viento;
+                    $obj->velocidadviento = $fila->velocidad_viento;
                     $obj->elevacion = $fila->elevacion;
                     $obj->latitud = $fila->latitud;
                     $obj->longitud = $fila->longitud;
-                    $obj->tipo_vegetacion = $fila->tipo_vegetacion;
+                    $obj->tipovegetacion = $fila->tipo_vegetacion;
                     $obj->causas = $fila->causas;
-                    $obj->id_zona = $fila->id_zona;
+                    $obj->idzona = $fila->id_zona;
                     $obj->humedad = $fila->humedad;
                     $obj->precipitacion = $fila->precipitacion;
-                    $obj->distancia_agua = $fila->distancia_agua;
+                    $obj->distanciaagua = $fila->distancia_agua;
                     $lista[] = $obj;
             }
 
