@@ -31,36 +31,36 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../estilos/estilos.css">
 </head>
 
 <body>
-    <div class="container mt-5">
+    <form method="POST">
         <h3>Acceso</h3>
-        <?= $error ?>
-        <form method="POST" class="col-md-6">
-            <div class="mb-3">
-                <label for="txtUsuario" class="form-label">Correo</label>
-                <input type="email" class="form-control" id="txtUsuario" name="txtUsuario" required value="<?= $correo ?>">
+        <div class="contenedor">
+            <?= $error ?>
+            <div class="col-9">
+                <label for="txtUsuario">Usuario</label>
+                <input type="text" id="txtUsuario" name="txtUsuario" value="<?= $correo ?>">
             </div>
-            <div class="mb-3">
-                <label for="txtContrasena" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="txtContrasena" name="txtContrasena" required>
+            <div class="col-9">
+                <label for="txtContrasena">Contraseña</label>
+                <input type="password" id="txtContrasena" name="txtContrasena">
             </div>
-            <div class="mb-3 d-flex gap-2">
-                <button class="btn btn-primary" type="submit">Iniciar</button>
-              
+            <div class="col-9">
+                <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
             </div>
-        </form>
-    </div>
+            
+        </div>
+    </form>
 </body>
 
 </html>
