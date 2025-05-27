@@ -63,6 +63,9 @@
                 </div>
             </fieldset>
             </div>
+            <div></div>
+            <button id="btnRegistrar" type="submit">Registrar</button>
+            <button id="btnRegresar" formaction>Regresar</button>
         </div>
     </form>
 </body>
