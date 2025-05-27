@@ -87,9 +87,9 @@
 
                 $lista = array();
 
-                $sql = "SELECT id, fecha, temperatura, velocidadviento, elevacion,
-                            latitud, longitud, tipovegetacion, causas, idzona,
-                            humedad, precipitacion, distanciaagua
+                $sql = "SELECT id, fecha, temperatura, velocidad_viento, elevacion,
+                            latitud, longitud, tipo_vegetacion, causas, id_zona,
+                            humedad, precipitacion, distancia_agua
                         FROM Incendios";
 
                 $sentenciaSQL = $this->conexion->prepare($sql);
@@ -101,24 +101,25 @@
                     $obj->id = $fila->id;
                     $obj->fecha = $fila->fecha;
                     $obj->temperatura = $fila->temperatura;
-                    $obj->velocidadviento = $fila->velocidadviento;
+                    $obj->velocidad_viento = $fila->velocidad_viento;
                     $obj->elevacion = $fila->elevacion;
                     $obj->latitud = $fila->latitud;
                     $obj->longitud = $fila->longitud;
-                    $obj->tipovegetacion = $fila->tipovegetacion;
+                    $obj->tipo_vegetacion = $fila->tipo_vegetacion;
                     $obj->causas = $fila->causas;
-                    $obj->idzona = $fila->idzona;
+                    $obj->id_zona = $fila->id_zona;
                     $obj->humedad = $fila->humedad;
                     $obj->precipitacion = $fila->precipitacion;
-                    $obj->distanciaagua = $fila->distanciaagua;
+                    $obj->distancia_agua = $fila->distancia_agua;
                     $lista[] = $obj;
             }
 
             return $lista;
 
         } catch (PDOException $e) {
-            return null;
-        } finally {
+    echo "Error: " . $e->getMessage(); // Agrega esto para ver el error
+    return null;
+} finally {
             Conexion::desconectar();
         }
     }

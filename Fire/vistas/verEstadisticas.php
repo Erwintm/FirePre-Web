@@ -1,5 +1,4 @@
 <?php
-
 require_once '../datos/DAOIncendio.php';
 $dao = new DAOIncendio();
 $listaIncendios = $dao->obtenerTodos();
@@ -50,22 +49,28 @@ $listaIncendios = $dao->obtenerTodos();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($listaIncendios as $i): ?>
+                    <?php if (!empty($listaIncendios) && is_array($listaIncendios)): ?>
+                        <?php foreach ($listaIncendios as $i): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($i->fecha) ?></td>
+                                <td><?= htmlspecialchars($i->temperatura) ?> °C</td>
+                                <td><?= htmlspecialchars($i->velocidad_viento) ?> km/h</td>
+                                <td><?= htmlspecialchars($i->elevacion) ?> m</td>
+                                <td><?= htmlspecialchars($i->latitud) ?></td>
+                                <td><?= htmlspecialchars($i->longitud) ?></td>
+                                <td><?= htmlspecialchars($i->tipo_vegetacion) ?></td>
+                                <td><?= htmlspecialchars($i->causas) ?></td>
+                                <td><?= htmlspecialchars($i->id_zona) ?></td>
+                                <td><?= htmlspecialchars($i->humedad) ?>%</td>
+                                <td><?= htmlspecialchars($i->precipitacion) ?> mm</td>
+                                <td><?= htmlspecialchars($i->distancia_agua) ?> m</td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <td><?= $i->fecha ?></td>
-                            <td><?= $i->temperatura ?> °C</td>
-                            <td><?= $i->velocidadviento ?> km/h</td>
-                            <td><?= $i->elevacion ?> m</td>
-                            <td><?= $i->latitud ?></td>
-                            <td><?= $i->longitud ?></td>
-                            <td><?= $i->tipovegetacion ?></td>
-                            <td><?= $i->causas ?></td>
-                            <td><?= $i->idzona ?></td>
-                            <td><?= $i->humedad ?>%</td>
-                            <td><?= $i->precipitacion ?> mm</td>
-                            <td><?= $i->distanciaagua ?> m</td>
+                            <td colspan="12">No hay datos para mostrar</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -76,3 +81,4 @@ $listaIncendios = $dao->obtenerTodos();
     </div>
 </body>
 </html>
+
