@@ -1,17 +1,8 @@
 <?php
     require_once 'conexion.php'; 
-    require_once '../modelos/usuario.php'; 
+    require_once '../modelos/incendio.php'; 
 
-    private function conectar(){
-        try{
-			$this->conexion = Conexion::conectar(); 
-		}
-		catch(Exception $e)
-		{
-			die($e->getMessage()); /*Si la conexion no se establece se cortara el flujo enviando un mensaje con el error*/
-		}
-    }
-
+   
     class DAOIncendio {
         private $conexion;
 

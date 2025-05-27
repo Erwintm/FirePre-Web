@@ -62,6 +62,46 @@ class DAOUsuario
             Conexion::desconectar();
         }
 	}
+
+
+
+public function obtenerTodos()
+{
+    try {
+        $this->conectar();
+        $lista = array();
+
+        $sentenciaSQL = $this->conexion->prepare("SELECT id, nombre, apellidos, contraseña, edad, correo, sexo, super FROM usuario");
+        $sentenciaSQL->execute();
+        $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_OBJ);
+
+        foreach ($resultado as $fila) {
+            $obj = new Usuario();
+            $obj->id = $fila->id;
+            $obj->nombre = $fila->nombre;
+            $obj->apellidos = $fila->apellidos;
+            $obj->password = $fila->contraseña;
+            $obj->edad = $fila->edad;
+            $obj->gmail = $fila->correo;
+            $obj->sexo = $fila->sexo;
+            $obj->super = $fila->super;
+
+            $lista[] = $obj;
+        }
+
+        return $lista;
+    } catch (PDOException $e) {
+        return null;
+    } finally {
+        Conexion::desconectar();
+    }
+}
+
+
+
+
+
+    //aqui
 }
 
 
