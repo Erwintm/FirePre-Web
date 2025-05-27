@@ -1,7 +1,7 @@
 <?php
 
-require_once '../datos/DaoIncendios.php';
-$dao = new DaoIncendios();
+require_once '../datos/DAOIncendio.php';
+$dao = new DAOIncendio();
 $listaIncendios = $dao->obtenerTodos();
 ?>
 
