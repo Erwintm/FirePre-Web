@@ -55,16 +55,16 @@
                 $this->conexion->prepare($sql)->execute([
                     ':fecha'            => $incendio->fecha,
                     ':temperatura'      => $incendio->temperatura,
-                    ':velocidad_viento' => $incendio->velocidadviento,
+                    ':velocidad_viento' => $incendio->velocidad_viento,
                     ':elevacion'        => $incendio->elevacion,
                     ':latitud'          => $incendio->latitud,
                     ':longitud'         => $incendio->longitud,
-                    ':tipo_vegetacion'  => $incendio->tipovegetacion,
+                    ':tipo_vegetacion'  => $incendio->tipo_vegetacion,
                     ':causas'           => $incendio->causas,
-                    ':id_zona'          => $incendio->idzona,
+                    ':id_zona'          => $incendio->id_zona,
                     ':humedad'          => $incendio->humedad,
                     ':precipitacion'    => $incendio->precipitacion,
-                    ':distancia_agua'   => $incendio->distanciaagua
+                    ':distancia_agua'   => $incendio->distancia_agua
                 ]);
 
                 $clave = $this->conexion->lastInsertId();
