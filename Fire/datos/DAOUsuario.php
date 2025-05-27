@@ -146,7 +146,7 @@ public function editar(Usuario $obj)
         $sql = "UPDATE usuario SET
                     nombre = ?,
                     apellidos = ?,
-                    contraseña = sha224(?),
+                    contraseña = SHA2(?, 224),
                     edad = ?,
                     correo = ?,
                     sexo = ?,
