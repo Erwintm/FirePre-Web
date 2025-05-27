@@ -2,11 +2,11 @@
 require_once '../modelos/incendio.php';
 require_once '../datos/DAOIncendio.php';
 
-// Verifica si se envió el formulario
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $incendio = new Incendio();
 
-    // Asigna los valores desde el formulario
+   
     $incendio->fecha = $_POST['txtFecha'];
     $incendio->temperatura = $_POST['txtTemperatura'];
     $incendio->velocidad_viento = $_POST['txtVelocidadV'];
@@ -20,11 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $incendio->precipitacion = $_POST['txtPrecipitacion'];
     $incendio->distancia_agua = $_POST['txtDistanciaAgua'];
 
-    // DAO para insertar el registro
+   
     $dao = new DAOIncendio();
     $resultado = $dao->agregar($incendio);
 
-    // Mostrar mensaje según resultado
+    
     if ($resultado > 0) {
         echo "<script>alert('Incendio registrado correctamente'); window.location.href = 'index_privado.php';</script>";
         exit;
