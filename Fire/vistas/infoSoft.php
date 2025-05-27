@@ -8,7 +8,7 @@
 </head>
 <body class="info">
     <h1>Información del software</h1>
-    <a href="index.php">Inicio</a>
+    <a href="javascript:history.back()" class="btn btn-primary">Regresar</a>
     <h3>Nombre del software</h3>
     <h4>Fire prevention</h4>
     <h3>Versión</h3>

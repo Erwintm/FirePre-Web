@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="col-6 mt-3">
-        <button class="btn btn-secondary" type="button" onclick="window.location.href='index.php'">Regresar</button>
+       <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
     </div>
 
 </form>
