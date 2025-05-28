@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </li>
 
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="registroUsuario.php">Registrar Usuarios</a>
+            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
         </li>
     
         <form action="">
@@ -228,9 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button class="btn btn-primary" type="submit">Aceptar</button>
     </div>
 
-    <div class="col-6 mt-3">
-       <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
-    </div>
+    
 
 </form>
 

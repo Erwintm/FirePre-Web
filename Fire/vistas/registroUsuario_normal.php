@@ -19,28 +19,11 @@
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="infoSoft_privado.php">Información del software</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link active" aria-disabled="true" href="verPredicciones_privado.php">Ver predicciones</a>
-         
-        </li>
         
-        <li class="nav-item">
-          <a class="nav-link active" aria-disabled="true" href="verEstadisticas_privado.php">Ver estadisticas</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php"> Gestionar Usuarios</a>
-        </li>
-    
+  
         <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Iniciar Sesion</button>
+           <button class="btn btn-primary" type="submit" formaction="index_oficial.php">Volver a la pagina</button>
         </form>
         
       </ul>
@@ -73,11 +56,6 @@
         $usuario->gmail      = trim($_POST["txtEmail"] ?? '');
         $usuario->password   = $_POST["txtContrasena"] ?? '';
 
-        if ($_POST["rbtTipo"] == "normal") {
-            $usuario->super = 2;
-        } else if ($_POST["rbtTipo"] == "administrador") {
-            $usuario->super = 1;
-        }
 
 
 
@@ -125,13 +103,13 @@
             <div class="alert alert-warning"><?= $error ?></div>
         <?php endif; ?>
 
-        <form id="frmRegistro" method="post" action="registroUsuario.php" novalidate>
+        <form id="frmRegistro" method="post" action="registroUsuario_normal.php" novalidate>
             <div class="row">
                 <legend class="mb-4">Registro usuario</legend>
 
                 <div class="mb-3 col-md-4">
                     <label for="txtNombre" class="form-label">Nombre</label>
-                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" minlength="2" maxlength="30" required>
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" minlength="2" maxlength="30" required >
                 </div>
                 <div id="menNom"></div>
                 <div class="mb-3 col-md-4">
@@ -170,19 +148,7 @@
                 </div>
                 <div id="menSexo"></div>
                 <!-- Campo Tipo de Usuario -->
-                <div class="mb-3 col-md-6">
-                    <fieldset class="border rounded p-3">
-                        <legend class="fs-6">Tipo usuario</legend>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" id="rbtAdmin" name="rbtTipo" value="administrador" class="form-check-input" required>
-                            <label for="rbtAdmin" class="form-check-label">Administrador</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" id="rbtNormal" name="rbtTipo" value="normal" class="form-check-input" required>
-                            <label for="rbtNormal" class="form-check-label">Normal</label>
-                        </div>
-                    </fieldset>
-                </div>
+                
                 <div id="menTipo"></div>
                 <div class="col-12 text-center mt-4">
                     <button id="btnRegistrar" type="submit" class="btn btn-primary btn-sm me-2">Registrar</button>
@@ -191,7 +157,7 @@
             </div>
         </form>
     </div>
-    <script src="../js/valRegUsuario"></script>
+    <script src="../js/valRegUsuario_normal.js"></script>
 </body>
 
 </html>

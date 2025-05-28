@@ -56,7 +56,7 @@
         
     
         <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Registrarte</button>
+          <button class="btn btn-primary" type="submit" formaction="registroUsuario_normal.php">Registrarte</button>
           <button class="btn btn-primary" type="submit" formaction="index_oficial.php">Volver a la pagina</button>
         </form>
         

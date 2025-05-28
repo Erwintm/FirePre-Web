@@ -7,7 +7,7 @@
     public $edad="";
     public $gmail="";
     public $sexo="";
-    public $super=0;
+    public $super=2;
 
 }
 ?>

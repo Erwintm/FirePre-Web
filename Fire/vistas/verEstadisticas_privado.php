@@ -38,7 +38,7 @@ $listaIncendios = $dao->obtenerTodos();
         </li>
 
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="registroUsuario.php">Registrar Usuarios</a>
+            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
         </li>
     
         <form action="">
@@ -111,9 +111,7 @@ $listaIncendios = $dao->obtenerTodos();
         </div>
     </div>
 
-    <div id="cabeza" class="text-center mt-4">
-        <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
-    </div>
+   
 </body>
 </html>
 

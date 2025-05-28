@@ -52,11 +52,7 @@
             <li id="azul">Sin riesgo</li>
         </ul>
     </div>
-    <div id="prediccion">
-        <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
-        
-    
-    </div>
+   
     
 </body>
 </html>

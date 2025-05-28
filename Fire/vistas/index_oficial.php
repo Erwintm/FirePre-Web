@@ -18,7 +18,7 @@
     
         <form action="">
           <button class="btn btn-primary" type="submit" formaction="acceso.php">Iniciar Sesion</button>
-            <button class="btn btn-primary" type="submit" formaction="registroUsuario.php">Registarte</button>
+            <button class="btn btn-primary" type="submit" formaction="registroUsuario_normal.php">Registarte</button>
         </form>
       </ul>
       

@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="registroUsuario.php">Registrar Usuarios</a>
+            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
         </li>
     
         <form action="">
@@ -60,11 +60,7 @@
             <li id="azul">Sin riesgo</li>
         </ul>
     </div>
-    <div id="prediccion">
-        <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
-        
     
-    </div>
     
 </body>
 </html>
