@@ -51,12 +51,14 @@
                 <label for="txtUsuario">Usuario</label>
                 <input type="text" id="txtUsuario" name="txtUsuario" value="<?= $correo ?>">
             </div>
+            <div id="menUsuario"></div>
             <div class="col-9">
                 <label for="txtContrasena">Contraseña</label>
                 <input type="password" id="txtContrasena" name="txtContrasena">
             </div>
+            <div id="menContra"></div>
             <div class="col-9">
-                <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
+                <button class="btn btn-primary" type="submit" id="btnIniciar">Iniciar Sesion</button>
             </div>
             
         </div>

@@ -8,18 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
         let menNom = document.getElementById("menNom");
         if (nombre.validity.valueMissing) {
             menNom.innerText = "Este campo es obligatorio";
+            menNom.classList.add("invalid");
             nombre.classList.add("invalid");
             hayErrores = true;
         } else if (valnombre.length < 3) {
             menNom.innerText = "Debe tener al menos 3 caracteres";
+            menNom.classList.add("invalid");
             nombre.classList.add("invalid");
             hayErrores = true;
         } else if (valnombre.length > 30) {
             menNom.innerText = "No debe exceder los 30 caracteres";
+            menNom.classList.add("invalid");
             nombre.classList.add("invalid");
             hayErrores = true;
         } else {
             menNom.innerText = "";
+            menNom.classList="";
             nombre.classList.remove("invalid");
             nombre.classList.add("valid");
         }
@@ -30,10 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let menApe = document.getElementById("menApe");
         if (apellidos.validity.valueMissing || valApe.length < 3 || valApe.length > 30) {
             menApe.innerText = "Debe tener entre 3 y 30 caracteres";
+            menApe.classList.add("invalid");
             apellidos.classList.add("invalid");
             hayErrores = true;
         } else {
             menApe.innerText = "";
+            menApe.classList="";
             apellidos.classList.remove("invalid");
             apellidos.classList.add("valid");
         }
@@ -44,10 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let menEdad = document.getElementById("menEdad");
         if (edad.validity.valueMissing || isNaN(valEdad) || valEdad < 13 || valEdad > 100) {
             menEdad.innerText = "La edad debe estar entre 13 y 100 años";
+            menEdad.classList.add("invalid");
             edad.classList.add("invalid");
             hayErrores = true;
         } else {
             menEdad.innerText = "";
+            menEdad.classList="";
             edad.classList.remove("invalid");
             edad.classList.add("valid");
         }
@@ -57,10 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let menEmail = document.getElementById("menEmail");
         if (email.validity.valueMissing || !email.value.includes('@')) {
             menEmail.innerText = "Ingrese un correo válido";
+            menEmail.classList.add("invalid");
             email.classList.add("invalid");
             hayErrores = true;
         } else {
             menEmail.innerText = "";
+            menEmail.classList="";
             email.classList.remove("invalid");
             email.classList.add("valid");
         }
@@ -70,10 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let menPass = document.getElementById("menPass");
         if (pass.validity.valueMissing || pass.value.length < 8 || pass.value.length > 25) {
             menPass.innerText = "La contraseña debe tener entre 8 y 25 caracteres";
+            menApe.classList.add("invalid");
             pass.classList.add("invalid");
             hayErrores = true;
         } else {
             menPass.innerText = "";
+            menPass.classList="";
             pass.classList.remove("invalid");
             pass.classList.add("valid");
         }
@@ -87,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menSexo.classList.add("invalid");
             hayErrores = true;
         } else {
+            menSexo.classList="";
             menSexo.innerText = "";
         }
 
@@ -100,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hayErrores = true;
         } else {
             menTipo.innerText = "";
+            menTipo.classList="";
         }
 
         // Si hay errores, cancelar envío
