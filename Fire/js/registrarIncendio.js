@@ -1,14 +1,29 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const txtFecha = document.getElementById("txtFecha");
+    const txtZona = document.getElementById("txtZona");
+    const txtTemperatura = document.getElementById("txtTemperatura");
+    const txtHumedad = document.getElementById("txtHumedad");
+    const txtVelocidadV = document.getElementById("txtVelocidadV");
+    const txtPrecipitacion = document.getElementById("txtPrecipitacion");
+    const txtElevacion = document.getElementById("txtElevacion");
+    const txtDistanciaAgua = document.getElementById("txtDistanciaAgua");
+    const txtLatitud = document.getElementById("txtLatitud");
+    const txtLongitud = document.getElementById("txtLongitud");
+    const txtTipoV = document.getElementById("txtTipoV");
+    const boton = document.getElementById("formIncendio");
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+    document.getElementById("btnRegistrar").addEventListener("click", (e) => {
+        e.preventDefault(); 
+
+       
         limpiarErrores();
+
         let valido = true;
 
-        if(txtFecha.value==''){
-            document.getElementById('errorFecha').textContent='Selecciona una fecha';
-            valido=false;
+        if (txtFecha.value === '') {
+            document.getElementById('errorFecha').textContent = 'Selecciona una fecha';
+            valido = false;
         }
 
         if (txtZona.value === '' || parseInt(txtZona.value) <= 0) {
@@ -16,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             valido = false;
         }
 
-        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value) ) {
+        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value)) {
             document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido.';
             valido = false;
         }
@@ -62,13 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (valido) {
-            form.submit();
+            boton.submit();
         }
     });
 
     function limpiarErrores() {
         const errores = document.querySelectorAll('.error');
-        errores.textContent='';
-
+        errores.forEach(err => err.textContent = '');
     }
 });

@@ -1,4 +1,4 @@
-form{
+#formIncendio{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -62,7 +62,7 @@ form{
 }
 
 .error {
-    color: #d00000; /* Rojo intenso */
+    color: #d00000; 
     font-size: 0.9em;
     
     font-weight: bold;
