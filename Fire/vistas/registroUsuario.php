@@ -12,7 +12,7 @@
 
 <body class="fondo">
     <?php
-    
+
     require_once '../modelos/usuario.php';
     require_once '../datos/DAOUsuario.php';
 
@@ -35,20 +35,20 @@
         $usuario->edad       = (int) ($_POST["txtEdad"] ?? 0);
         $usuario->gmail      = trim($_POST["txtEmail"] ?? '');
         $usuario->password   = $_POST["txtContrasena"] ?? '';
-        
-        if($_POST["rbtTipo"]=="normal"){
-            $usuario->super=2;
-        }else if($_POST["rbtTipo"]=="administrador"){
-            $usuario->super=1;
-        }
-       
 
-    
-    if ($_POST["rbtSexo"] == "Masculino") {
-        $usuario->sexo = "Masculino";
-    } elseif ( $_POST["rbtSexo"] == "Femenino") {
-        $usuario->sexo = "Femenino";
-    }
+        if ($_POST["rbtTipo"] == "normal") {
+            $usuario->super = 2;
+        } else if ($_POST["rbtTipo"] == "administrador") {
+            $usuario->super = 1;
+        }
+
+
+
+        if ($_POST["rbtSexo"] == "Masculino") {
+            $usuario->sexo = "Masculino";
+        } elseif ($_POST["rbtSexo"] == "Femenino") {
+            $usuario->sexo = "Femenino";
+        }
 
         // Validaciones
         $error .= validarCadena($usuario->nombre, 3, 30, "Nombre");
@@ -66,7 +66,7 @@
             $error .= "La contraseña debe tener entre 8 y 25 caracteres.<br>";
         }
 
-        
+
 
         // Procesamiento si no hay errores
         if (empty($error)) {
@@ -154,7 +154,7 @@
             </div>
         </form>
     </div>
-<script src="../js/valRegUsuario"></script>
+    <script src="../js/valRegUsuario"></script>
 </body>
 
 </html>
