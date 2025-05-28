@@ -2,9 +2,9 @@
     background-color: rgba(201, 161, 240, 0.74);
 }
 .invalid{
-    color: red;
-    border: 1px red solid;
-    outline-color: red;
+    color: red !important;
+    border: 1px red solid !important;
+    outline-color: red !important;
 }
 .valid{
     

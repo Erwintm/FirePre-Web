@@ -107,12 +107,12 @@
                     <input type="number" id="txtEdad" name="txtEdad" class="form-control" min="13" max="100" required>
                 </div>
                 <div id="menEdad"></div>
-                <div class="mb-3 col-6">
+                <div class="mb-3 col-4">
                     <label for="txtEmail" class="form-label">Email</label>
                     <input type="email" id="txtEmail" name="txtEmail" class="form-control" minlength="10" maxlength="40" required>
                 </div>
                 <div id="menEmail"></div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-md-4">
                     <label for="txtContrasena" class="form-label">Contraseña</label>
                     <input type="password" id="txtContrasena" name="txtContrasena" class="form-control" minlength="8" maxlength="25" required>
                 </div>
@@ -154,7 +154,7 @@
             </div>
         </form>
     </div>
-
+<script src="../js/valRegUsuario"></script>
 </body>
 
 </html>

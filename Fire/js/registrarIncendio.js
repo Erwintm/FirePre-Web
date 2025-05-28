@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             valido = false;
         }
 
-        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value)) {
+        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value) ) {
             document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido.';
             valido = false;
         }
@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function limpiarErrores() {
         const errores = document.querySelectorAll('.error');
-        errores.forEach(div => div.textContent = '');
+        errores.textContent='';
+
     }
 });

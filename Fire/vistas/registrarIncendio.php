@@ -3,6 +3,7 @@ require_once '../modelos/incendio.php';
 require_once '../datos/DAOIncendio.php';
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $incendio = new Incendio();
 
@@ -20,17 +21,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $incendio->precipitacion = $_POST['txtPrecipitacion'];
     $incendio->distancia_agua = $_POST['txtDistanciaAgua'];
 
-   
+   $error = '';
+
+    if($incendio->temperatura<20){
+        $error.="La temperatura no debe ser menor a 20 grado.<br>";
+    }
+
+    if($incendio->velocidad_viento<0){
+        $error.="La velocidad no debe ser menor a 0.<br>;";
+    }
+
+    if($incendio->elevacion<0){
+         $error.="La elevacion no debe ser menor a 0.<br>;";
+    }
+
+    if($incendio->latitud>90 && $incendio->latitud<-90 ){
+        $error.="La latitud debe estar entre -90 y 90.<br>;";
+    }
+
+    if($incendio->longitud< -180 && $incendio->longitud>180){
+        $error.="La longitud debe estar entre -180 y 180.<br>;";
+    }
+
+    if($incendio->id_zona<=0){
+        $error.="El ide deve ser mayor a 0.<br>;";
+    }
+    
+    if($incendio->humedad<0 && $incendio->humedad>100){
+        $error.="La humedad debe ser entre 0 y 100.<br>;";
+    }
+
+    if($incendio->precipitacion<0){
+        $error.="La precipitacion debe ser mayor a 0.<br>;";
+    }
+
+    if($incendio->distancia_agua<0){
+        $error.="La distancia del agua debe ser mayor a 0.<br>;";
+    }
+        
+    
+        if (empty($error)) {
+
     $dao = new DAOIncendio();
     $resultado = $dao->agregar($incendio);
 
     
     if ($resultado > 0) {
-        echo "<script>alert('Incendio registrado correctamente'); window.location.href = 'index_privado.php';</script>";
-        exit;
+         $_SESSION["msg"] = "alert-success--Icendio almacenado correctamente";
+                header("Location: index_privado.php");
+                exit;
     } else {
         echo "<script>alert('Error al registrar el incendio');</script>";
     }
+}
 }
 ?>
 
@@ -46,6 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
+<?php if (!empty($error)): ?>
+    <div class="alert alert-danger m-3">
+        <?= $error ?>
+    </div>
+<?php endif; ?>
+
+
 <form id="formIncendio" method="POST" action="registrarIncendio.php">
 
     <div class="col-12">
@@ -54,61 +104,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="col-6">
         <label for="txtFecha">Fecha:</label>  
-        <input type="date" id="txtFecha" name="txtFecha">
+        <input type="date" id="txtFecha" name="txtFecha" require>
         <div id="errorFecha" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtZona">ID zona:</label>
-        <input type="number" id="txtZona" name="txtZona">
+        <input type="number" id="txtZona" name="txtZona" min="1" require>
         <div id="errorZona" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtTemperatura">Temperatura:</label>
-        <input type="number" id="txtTemperatura" name="txtTemperatura">
+        <input type="number" id="txtTemperatura" name="txtTemperatura" min="20" max="60" require >
         <div id="errorTemperatura" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtHumedad">Humedad Relativa (%):</label>
-        <input type="number" id="txtHumedad" name="txtHumedad">
+        <input type="number" id="txtHumedad" name="txtHumedad" require min="1" max="100">
         <div id="errorHumedad" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtVelocidadV">Velocidad del viento (km/h):</label>
-        <input type="number" id="txtVelocidadV" name="txtVelocidadV">
+        <input type="number" id="txtVelocidadV" name="txtVelocidadV" require min="1">
         <div id="errorViento" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtPrecipitacion">Precipitación (mm):</label>
-        <input type="number" id="txtPrecipitacion" name="txtPrecipitacion">
+        <input type="number" id="txtPrecipitacion" name="txtPrecipitacion" require min="1">
         <div id="errorPrecipitacion" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtElevacion">Elevación (m):</label>
-        <input type="number" id="txtElevacion" name="txtElevacion">
+        <input type="number" id="txtElevacion" name="txtElevacion" require min="1">
         <div id="errorElevacion" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtDistanciaAgua">Distancia del agua (km):</label>
-        <input type="number" id="txtDistanciaAgua" name="txtDistanciaAgua">
+        <input type="number" id="txtDistanciaAgua" name="txtDistanciaAgua" require min="1">
         <div id="errorDistancia" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtLatitud">Latitud:</label>
-        <input type="number" id="txtLatitud" name="txtLatitud" step="any">
+        <input type="number" id="txtLatitud" name="txtLatitud" step="any" min="-90" max="90" require>
         <div id="errorLatitud" class="error"></div>
     </div>
 
     <div class="col-6">
         <label for="txtLongitud">Longitud:</label>
-        <input type="number" id="txtLongitud" name="txtLongitud" step="any">
+        <input type="number" id="txtLongitud" name="txtLongitud" step="any" min="-180" max="180" require>
         <div id="errorLongitud" class="error"></div>
     </div>
 
