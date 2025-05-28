@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("btnRegistrar").addEventListener("click", (evento) => {
+    document.getElementById("btnRegistrar").addEventListener("click", (evento) =>{
         let hayErrores = false;
 
         // Nombre
