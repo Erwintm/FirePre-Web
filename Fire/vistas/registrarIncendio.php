@@ -152,6 +152,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="number" id="txtZona" name="txtZona" min="1" require>
         <div id="errorZona" class="error"></div>
     </div>
+    <div class="col-12">
+        <label for="txtZona">Zona :</label>
+        <select id="txtZona" name="txtZona" required>
+            <option value="1">Uriangato</option>
+            <option value="2">Moroleón</option>
+            <option value="3">Yuriria</option>
+            <option value="4">El Derramadero</option>
+            <option value="5">El Charco</option>
+            <option value="6">La Cinta</option>
+        </select>
+        <div id="errorZona" class="error"></div>
+    </div>
 
     <div class="col-6">
         <label for="txtTemperatura">Temperatura:</label>
