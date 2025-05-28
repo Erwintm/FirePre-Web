@@ -15,6 +15,33 @@ $listaIncendios = $dao->obtenerTodos();
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="#">Navegación</a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="infoSoft_publico.php">Información del software</a>
+        </li>
+       
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-disabled="true" href="verEstadisticas_publico.php">Ver estadisticas</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active" aria-disabled="true" href="verPredicciones_publico.php">Ver predicciones</a>
+        </li>
+    
+        <form action="">
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
+        </form>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
     <div id="cabeza">
         <h1>Estadísticas</h1>
     </div>

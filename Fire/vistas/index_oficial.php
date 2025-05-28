@@ -14,21 +14,11 @@
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="infoSoft_publico.php">Información del software</a>
-        </li>
-       
         
-        <li class="nav-item">
-          <a class="nav-link active" aria-disabled="true" href="verEstadisticas_publico.php">Ver estadisticas</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="verPredicciones_publico.php">Ver predicciones</a>
-        </li>
     
         <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Iniciar Sesion</button>
+            <button class="btn btn-primary" type="submit" formaction="registroUsuario.php">Registarte</button>
         </form>
       </ul>
       

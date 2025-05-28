@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="../estilos/estilos.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../estilos/estilos2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
   <div class="container-fluid ">
     <a class="navbar-brand" href="#">Navegación</a>
     
@@ -44,27 +44,27 @@
     </div>
   </div>
 </nav>
-   
+    <div id="prediccion">
 
+        <div id="imPre">
 
-    <div id="portada">
-        
-    </div>
-    <div class="content">
-        <h2>¿Qué es Fire Prevention?</h2>
-        <p>Fire prevention es un software en el cual tiene como objetivo ayudar a las autoridades de protección civil a prevenir incendios, mediante estadísticas y predicciones, pero para ello primero deben ser registrados los incendios.</p>
-        <div class="images">
-            <div id="im1"></div>
-            <div id="im2"></div>
-            <div id="im3"></div>
         </div>
-        <h2>¿Quiénes pueden usar el software?</h2>
-        <p>Las personas que pueden utilizar el software son los bomberos, civiles y protección civil para estar alertas ante un incendio.</p>
     </div>
 
-
-
-
-
-  </body>
+    <div id="significado">
+        <ul>
+            <li id="rojo">Riesgo muy alto</li>
+            <li id="naranja">Riesgo alto</li>
+            <li id="amarillo">Riesgo mediano</li>
+            <li id="verde">Riesgo bajo</li>
+            <li id="azul">Sin riesgo</li>
+        </ul>
+    </div>
+    <div id="prediccion">
+        <button class="btn btn-primary" onclick="window.history.back()">Regresar</button>
+        
+    
+    </div>
+    
+</body>
 </html>
