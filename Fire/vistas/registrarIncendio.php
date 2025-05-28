@@ -147,12 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div id="errorFecha" class="error"></div>
     </div>
 
+   
     <div class="col-6">
-        <label for="txtZona">ID zona:</label>
-        <input type="number" id="txtZona" name="txtZona" min="1" require>
-        <div id="errorZona" class="error"></div>
-    </div>
-    <div class="col-12">
         <label for="txtZona">Zona :</label>
         <select id="txtZona" name="txtZona" required>
             <option value="1">Uriangato</option>
