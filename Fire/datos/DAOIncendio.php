@@ -117,12 +117,46 @@
             return $lista;
 
         } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage(); // Agrega esto para ver el error
-    return null;
-} finally {
+            echo "Error: " . $e->getMessage(); // Agrega esto para ver el error
+            return null;
+        } finally {
             Conexion::desconectar();
         }
     }
+
+
+    public function contarIncendiosPorFecha($fecha)
+    {
+        try
+        {
+            $this->conectar();
+            
+            $resultado = 0;
+
+            $sentenciaSQL = $this->conexion->prepare("
+                SELECT COUNT(*) AS total
+                FROM incendios
+                WHERE fecha = ?
+            ");
+
+            $sentenciaSQL->execute([$fecha]);
+
+            $fila = $sentenciaSQL->fetch(PDO::FETCH_OBJ);
+
+            if ($fila) {
+                $resultado = $fila->total;
+            }
+
+            return $resultado;
+        }
+        catch(Exception $e){
+            return 0;
+        }
+        finally{
+            Conexion::desconectar();
+        }
+}
+
 }
 ?>
 
