@@ -1,21 +1,13 @@
-*{
-    margin: 0; 
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.contenidoIma{
-    display: flex;
-    justify-content: space-around;
-    padding:25px;
-   
-   
-}
+.error {
+    color: #d00000; 
+    font-size: 0.9em;
     
+    font-weight: bold;
+}
 
-
-#cabeza{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#errorZona{
+    color: #d00000; 
+    font-size: 0.9em;
+    
+    font-weight: bold;
 }

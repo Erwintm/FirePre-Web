@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function limpiarErrores() {
-        const errores = document.querySelectorAll('.error');
-        errores.forEach(err => err.textContent = '');
+        const errores = document.querySelectorAll('.error').textContent="";
+        
     }
 });
