@@ -66,29 +66,41 @@
     </div>
 
     <div class="container mt-4" style="max-width: 450px;">
-  <form method="get" class="row g-3 align-items-center">
-    <div class="col-12 col-md-4">
+  <form method="get" action="" novalidate class="row g-3 align-items-center">
+    
+    <div class="col-12">
+      <legend>Filtrar incendios</legend>
+    </div>
+    
+    <div class="col-12 col-md-6">
       <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
-      <input type="date" id="fecha_inicio" name="fecha_inicio" value="<?= htmlspecialchars($fecha_inicio ?? '') ?>" class="form-control" required>
+      <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required>
+      <div class="error" id="errorFechaInicio"></div>
     </div>
-    <div class="col-12 col-md-4">
+
+    <div class="col-12 col-md-6">
       <label for="fecha_fin" class="form-label">Fecha Fin</label>
-      <input type="date" id="fecha_fin" name="fecha_fin" value="<?= htmlspecialchars($fecha_fin ?? '') ?>" class="form-control" required>
+      <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required>
+      <div class="error" id="errorFechaFin"></div>
     </div>
-    <div class="col-12 col-md-4">
+
+    <div class="col-12">
       <label for="zona" class="form-label">Zona</label>
       <select id="zona" name="zona" class="form-select" required>
-        <option value="" <?= empty($zona) ? 'selected' : '' ?> disabled>Selecciona una zona</option>
-        <option value="Uriangato" <?= ($zona ?? '') === 'Uriangato' ? 'selected' : '' ?>>Uriangato</option>
-        <option value="Moroleón" <?= ($zona ?? '') === 'Moroleón' ? 'selected' : '' ?>>Moroleón</option>
-        <option value="El Derramadero" <?= ($zona ?? '') === 'El Derramadero' ? 'selected' : '' ?>>El Derramadero</option>
-        <option value="El Charco" <?= ($zona ?? '') === 'El Charco' ? 'selected' : '' ?>>El Charco</option>
-        <option value="La Cinta" <?= ($zona ?? '') === 'La Cinta' ? 'selected' : '' ?>>La Cinta</option>
+        <option value="" disabled selected>Selecciona una zona</option>
+        <option value="Uriangato">Uriangato</option>
+        <option value="Moroleón">Moroleón</option>
+        <option value="El Derramadero">El Derramadero</option>
+        <option value="El Charco">El Charco</option>
+        <option value="La Cinta">La Cinta</option>
       </select>
+      <div class="error" id="errorZona"></div>
     </div>
-    <div class="col-12 text-center mt-2">
+
+    <div class="col-12 text-center mt-3">
       <button type="submit" class="btn btn-danger">Filtrar incendios</button>
     </div>
+
   </form>
 </div>
 
