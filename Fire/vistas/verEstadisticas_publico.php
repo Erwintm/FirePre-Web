@@ -12,7 +12,7 @@
     if ($fecha_inicio && $fecha_fin && $zona) {
         $listaIncendios = $dao->obtenerTodos($fecha_inicio, $fecha_fin, $zona);
     } else {
-        $listaIncendios = $dao->obtenerTodos(); // O como se llame tu método normal
+        $listaIncendios = $dao->obtenerTodos(); 
     }
 ?>
 

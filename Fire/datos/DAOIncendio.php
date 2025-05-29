@@ -94,7 +94,7 @@
                         LEFT JOIN zona z ON i.id_zona = z.id
                         WHERE 1=1";
 
-                // Condiciones 
+               
                 if ($fechaInicio && $fechaFin) {
                     $sql .= " AND i.fecha BETWEEN :fechaInicio AND :fechaFin";
                 }
