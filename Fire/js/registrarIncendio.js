@@ -24,14 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (txtFecha.value === '') {
             document.getElementById('errorFecha').textContent = 'Selecciona una fecha';
+            
             valido = false;
         }
 
-        if (txtZona.value === '' || parseInt(txtZona.value) <= 0 ) {
+        if (txtZona.value === '') {
             document.getElementById('errorZona').textContent = 'selecciona una zona';
             valido = false;
         }
 
+        
         if (txtTemperatura.value === '' || isNaN(txtTemperatura.value) || parseInt(txtTemperatura.value) <19) {
             document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido y debes ser mayo a 19.';
             valido = false;

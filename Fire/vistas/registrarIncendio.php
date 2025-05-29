@@ -241,6 +241,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div id="errorCausas" class="error"></div>
     </div>
 
+
+    
     <div class="col-6 mt-3">
         <button class="btn btn-primary" type="submit" id="btnRegistrar">Aceptar</button>
     </div>
