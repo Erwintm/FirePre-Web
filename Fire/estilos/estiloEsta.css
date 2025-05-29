@@ -1,0 +1,10 @@
+.error {
+    color: #d00000; 
+    font-size: 0.9em;
+    
+    font-weight: bold;
+}
+
+#cabeza{
+    text-align: center;
+}

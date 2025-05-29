@@ -1,13 +1,7 @@
 .error {
-    color: #d00000; 
+    color: #d00000 ; 
     font-size: 0.9em;
     
     font-weight: bold;
 }
 
-#errorZona{
-    color: #d00000; 
-    font-size: 0.9em;
-    
-    font-weight: bold;
-}
