@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Incendio</title>
     <link rel="stylesheet" href="../estilos/estiloRegistrar.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
+    <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
   <div class="container-fluid ">
     <a class="navbar-brand" href="#">Navegación</a>
     
@@ -35,12 +32,12 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
+            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php"> Gestionar Usuarios</a>
         </li>
     
-        <form action="">
-          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
-        </form>
+       
+          <button id="" class="btn btn-primary" type="submit" onclick="window.location.href='acceso.php'">Cerrar Sesion</button>
+     
         
       </ul>
       
@@ -73,6 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    $error = '';
 
+   if (empty($incendio->fecha)) {
+    $error .= "Selecciona una fecha por favor.<br>";
+}
     if($incendio->temperatura<20){
         $error.="La temperatura no debe ser menor a 20 grado.<br>";
     }
@@ -85,19 +85,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $error.="La elevacion no debe ser menor a 0.<br>";
     }
 
-    if($incendio->latitud>90 && $incendio->latitud<-90 ){
+    if($incendio->latitud>90 || $incendio->latitud<-90 ){
         $error.="La latitud debe estar entre -90 y 90.<br>";
     }
 
-    if($incendio->longitud< -180 && $incendio->longitud>180){
+    if($incendio->longitud< -180 || $incendio->longitud>180){
         $error.="La longitud debe estar entre -180 y 180.<br>";
     }
 
-    if($incendio->id_zona<=0){
-        $error.="El ide deve ser mayor a 0.<br";
+    if(empty($incendio->$tipo_vegetacion)){
+          $error .= "Selecciona un tipo de vegetacion.<br>";
+    }
+
+    if(empty($incendio->$causas)){
+        $error .= "Selecciona una causa de incendio<br>";
+    }
+
+    if(empty($incendio->$id_zona)){
+     $error .= "Selecciona una zona<br>";
     }
     
-    if($incendio->humedad<0 && $incendio->humedad>100){
+    
+    if($incendio->humedad<0 || $incendio->humedad>100){
         $error.="La humedad debe ser entre 0 y 100.<br>";
     }
 

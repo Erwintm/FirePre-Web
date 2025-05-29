@@ -1,4 +1,4 @@
-#formIncendio{
+form{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -6,7 +6,7 @@
     margin: auto;
     padding: 20px;
     justify-content: center;
-   background-color: rgb(240, 121, 121);
+   background-color: rgb(12, 8, 8);
 }
 
 

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const txtLatitud = document.getElementById("txtLatitud");
     const txtLongitud = document.getElementById("txtLongitud");
     const txtTipoV = document.getElementById("txtTipoV");
+    const txtCausasInce = document.getElementById("txtCausasInce");
     const boton = document.getElementById("formIncendio");
 
     document.getElementById("btnRegistrar").addEventListener("click", (e) => {
@@ -26,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
             valido = false;
         }
 
-        if (txtZona.value === '' || parseInt(txtZona.value) <= 0) {
-            document.getElementById('errorZona').textContent = 'ID Zona debe ser un número entero positivo.';
+        if (txtZona.value === '' || parseInt(txtZona.value) <= 0 ) {
+            document.getElementById('errorZona').textContent = 'selecciona una zona';
             valido = false;
         }
 
-        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value)) {
-            document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido.';
+        if (txtTemperatura.value === '' || isNaN(txtTemperatura.value) || parseInt(txtTemperatura.value) <19) {
+            document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido y debes ser mayo a 19.';
             valido = false;
         }
 
@@ -46,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             valido = false;
         }
 
-        if (txtPrecipitacion.value === '' || isNaN(txtPrecipitacion.value)) {
-            document.getElementById('errorPrecipitacion').textContent = 'Precipitación debe ser un número válido.';
+        if (txtPrecipitacion.value === '' || isNaN(txtPrecipitacion.value) || parseInt(txtPrecipitacion.value) > 0) {
+            document.getElementById('errorPrecipitacion').textContent = 'Precipitación debe ser un número válido y debe se mayor a 0.';
             valido = false;
         }
 
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (txtDistanciaAgua.value === '' || parseFloat(txtDistanciaAgua.value) < 0) {
-            document.getElementById('errorDistancia').textContent = 'Distancia al agua debe ser mayor o igual a 0.';
+            document.getElementById('errorDistancia').textContent = 'Distancia al agua debe ser mayor  a 0.';
             valido = false;
         }
 
@@ -73,6 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (txtTipoV.value === '') {
             document.getElementById('errorVegetacion').textContent = 'Debe seleccionar un tipo de vegetación.';
+            valido = false;
+        }
+
+         if (txtCausasInce.value === '') {
+            document.getElementById('errorCausas').textContent = 'Debe seleccionar una causa de incendio.';
             valido = false;
         }
 
