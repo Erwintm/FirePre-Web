@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         
         if (txtTemperatura.value === '' || isNaN(txtTemperatura.value) || parseInt(txtTemperatura.value) <19) {
-            document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido y debes ser mayo a 19.';
+            document.getElementById('errorTemperatura').textContent = 'Temperatura debe ser un número válido y debes ser mayor a 19.';
             valido = false;
         }
 
@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
             valido = false;
         }
 
-        if (txtPrecipitacion.value === '' || isNaN(txtPrecipitacion.value) || parseInt(txtPrecipitacion.value) > 0) {
+        if (txtPrecipitacion.value === '' || isNaN(txtPrecipitacion.value) || parseInt(txtPrecipitacion.value) < 0) {
             document.getElementById('errorPrecipitacion').textContent = 'Precipitación debe ser un número válido y debe se mayor a 0.';
             valido = false;
         }
 
         if (txtElevacion.value === '' || isNaN(txtElevacion.value)) {
-            document.getElementById('errorElevacion').textContent = 'Elevación debe ser un número válido.';
+            document.getElementById('errorElevacion').textContent = 'Elevación debe ser un número válido y debe ser mayor a 0.';
             valido = false;
         }
 

@@ -93,15 +93,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error.="La longitud debe estar entre -180 y 180.<br>";
     }
 
-    if(empty($incendio->$tipo_vegetacion)){
+    if(($incendio->$tipo_vegetacion="")){
           $error .= "Selecciona un tipo de vegetacion.<br>";
     }
 
-    if(empty($incendio->$causas)){
+    if(($incendio->$causas="")){
         $error .= "Selecciona una causa de incendio<br>";
     }
 
-    if(empty($incendio->$id_zona)){
+    if(($incendio->$id_zona="")){
      $error .= "Selecciona una zona<br>";
     }
     
