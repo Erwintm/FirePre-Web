@@ -80,17 +80,19 @@
             }
         }
 
-        public function obtenerTodos()
+        public function obtenerTodos($fechaInicio = null, $fechaFin = null, $zona = null)
         {
             try {
                 $this->conectar();
 
                 $lista = array();
 
-                $sql = "SELECT id, fecha, temperatura, velocidad_viento, elevacion,
-                            latitud, longitud, tipo_vegetacion, causas, id_zona,
-                            humedad, precipitacion, distancia_agua
-                        FROM Incendios";
+                $sql = "SELECT i.id, i.fecha, i.temperatura, i.velocidad_viento, i.elevacion,
+                                i.latitud, i.longitud, i.tipo_vegetacion, i.causas, i.id_zona,
+                                i.humedad, i.precipitacion, i.distancia_agua
+                        FROM Incendios i
+                        LEFT JOIN zona z ON i.id_zona = z.id
+                        ";
 
                 $sentenciaSQL = $this->conexion->prepare($sql);
                 $sentenciaSQL->execute();
@@ -124,40 +126,7 @@
         }
     }
 
-
-    public function contarIncendiosPorFecha($fecha)
-    {
-        try
-        {
-            $this->conectar();
-            
-            $resultado = 0;
-
-            $sentenciaSQL = $this->conexion->prepare("
-                SELECT COUNT(*) AS total
-                FROM incendios
-                WHERE fecha = ?
-            ");
-
-            $sentenciaSQL->execute([$fecha]);
-
-            $fila = $sentenciaSQL->fetch(PDO::FETCH_OBJ);
-
-            if ($fila) {
-                $resultado = $fila->total;
-            }
-
-            return $resultado;
-        }
-        catch(Exception $e){
-            return 0;
-        }
-        finally{
-            Conexion::desconectar();
-        }
-}
-
-}
+    }
 ?>
 
 

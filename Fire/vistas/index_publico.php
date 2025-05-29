@@ -26,7 +26,7 @@
         <li class="nav-item">
             <a class="nav-link active" aria-disabled="true" href="verPredicciones_publico.php">Ver predicciones</a>
         </li>
-    
+        
         <form action="">
           <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
         </form>

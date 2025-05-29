@@ -1,7 +1,19 @@
 <?php
-require_once '../datos/DAOIncendio.php';
-$dao = new DAOIncendio();
-$listaIncendios = $dao->obtenerTodos();
+    require_once '../datos/DAOIncendio.php';
+
+    $dao = new DAOIncendio();
+
+    $fecha_inicio = $_GET['fecha_inicio'] ?? null;
+    $fecha_fin = $_GET['fecha_fin'] ?? null;
+    $zona = $_GET['zona'] ?? null;
+
+    var_dump($fecha_inicio, $fecha_fin, $zona);
+
+    if ($fecha_inicio && $fecha_fin && $zona) {
+        $listaIncendios = $dao->obtenerTodos($fecha_inicio, $fecha_fin, $zona);
+    } else {
+        $listaIncendios = $dao->obtenerTodos(); // O como se llame tu método normal
+    }
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +65,34 @@ $listaIncendios = $dao->obtenerTodos();
     <div id="cabeza">
         <h1>Estadísticas</h1>
     </div>
+
+    <div class="container mt-4" style="max-width: 450px;">
+  <form method="get" class="row g-3 align-items-center">
+    <div class="col-12 col-md-4">
+      <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
+      <input type="date" id="fecha_inicio" name="fecha_inicio" value="<?= htmlspecialchars($fecha_inicio ?? '') ?>" class="form-control" required>
+    </div>
+    <div class="col-12 col-md-4">
+      <label for="fecha_fin" class="form-label">Fecha Fin</label>
+      <input type="date" id="fecha_fin" name="fecha_fin" value="<?= htmlspecialchars($fecha_fin ?? '') ?>" class="form-control" required>
+    </div>
+    <div class="col-12 col-md-4">
+      <label for="zona" class="form-label">Zona</label>
+      <select id="zona" name="zona" class="form-select" required>
+        <option value="" <?= empty($zona) ? 'selected' : '' ?> disabled>Selecciona una zona</option>
+        <option value="Uriangato" <?= ($zona ?? '') === 'Uriangato' ? 'selected' : '' ?>>Uriangato</option>
+        <option value="Moroleón" <?= ($zona ?? '') === 'Moroleón' ? 'selected' : '' ?>>Moroleón</option>
+        <option value="El Derramadero" <?= ($zona ?? '') === 'El Derramadero' ? 'selected' : '' ?>>El Derramadero</option>
+        <option value="El Charco" <?= ($zona ?? '') === 'El Charco' ? 'selected' : '' ?>>El Charco</option>
+        <option value="La Cinta" <?= ($zona ?? '') === 'La Cinta' ? 'selected' : '' ?>>La Cinta</option>
+      </select>
+    </div>
+    <div class="col-12 text-center mt-2">
+      <button type="submit" class="btn btn-danger">Filtrar incendios</button>
+    </div>
+  </form>
+</div>
+
 
     <div class="contenidoIma">
         <div id="im1"></div>
