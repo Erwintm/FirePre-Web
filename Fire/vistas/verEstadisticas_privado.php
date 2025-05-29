@@ -4,16 +4,17 @@
     $dao = new DAOIncendio();
 
     $fecha_inicio = $_GET['fecha_inicio'] ?? null;
-    $fecha_fin = $_GET['fecha_fin'] ?? null;
-    $zona = $_GET['zona'] ?? null;
+$fecha_fin = $_GET['fecha_fin'] ?? null;
+$zona = $_GET['zona'] ?? null;
 
-    var_dump($fecha_inicio, $fecha_fin, $zona);
+if (isset($_GET['fecha_inicio'], $_GET['fecha_fin'], $_GET['zona']) &&
+    $_GET['fecha_inicio'] !== '' && $_GET['fecha_fin'] !== '' && $_GET['zona'] !== '') {
+    
+    $listaIncendios = $dao->obtenerTodos($fecha_inicio, $fecha_fin, $zona);
+} else {
+    $listaIncendios = $dao->obtenerTodos(); 
+}
 
-    if ($fecha_inicio && $fecha_fin && $zona) {
-        $listaIncendios = $dao->obtenerTodos($fecha_inicio, $fecha_fin, $zona);
-    } else {
-        $listaIncendios = $dao->obtenerTodos(); 
-    }
 ?>
 
 <!DOCTYPE html>
