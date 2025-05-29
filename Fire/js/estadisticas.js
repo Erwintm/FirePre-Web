@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             valido = false;
         }
 
-       
+        if (valido) {
+            e.target.closest("form").submit();
+        }
     });
 
     function limpiarErrores() {

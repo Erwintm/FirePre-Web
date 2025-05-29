@@ -6,7 +6,7 @@ class Conexion
 {
     
     private static $servidor = 'localhost' ;
-    private static $db = 'incendios' ;
+    private static $db = 'FirePrevention' ;
     private static $usuario = 'postgres';
     private static $password = 'root';
     private static $puerto = '5432';
