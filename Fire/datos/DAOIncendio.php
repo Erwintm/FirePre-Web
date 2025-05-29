@@ -88,13 +88,33 @@
                 $lista = array();
 
                 $sql = "SELECT i.id, i.fecha, i.temperatura, i.velocidad_viento, i.elevacion,
-                                i.latitud, i.longitud, i.tipo_vegetacion, i.causas, i.id_zona,
+                                i.latitud, i.longitud, i.tipo_vegetacion, i.causas, z.nombre AS id_zona,
                                 i.humedad, i.precipitacion, i.distancia_agua
                         FROM Incendios i
                         LEFT JOIN zona z ON i.id_zona = z.id
-                        ";
+                        WHERE 1=1";
+
+                // Condiciones 
+                if ($fechaInicio && $fechaFin) {
+                    $sql .= " AND i.fecha BETWEEN :fechaInicio AND :fechaFin";
+                }
+
+                if ($zona) {
+                    $sql .= " AND z.nombre = :zona";
+                }
 
                 $sentenciaSQL = $this->conexion->prepare($sql);
+
+                
+                if ($fechaInicio && $fechaFin) {
+                    $sentenciaSQL->bindParam(':fechaInicio', $fechaInicio);
+                    $sentenciaSQL->bindParam(':fechaFin', $fechaFin);
+                }
+
+                if ($zona) {
+                    $sentenciaSQL->bindParam(':zona', $zona);
+                }
+
                 $sentenciaSQL->execute();
                 $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_OBJ);
 
@@ -114,18 +134,18 @@
                     $obj->precipitacion = $fila->precipitacion;
                     $obj->distancia_agua = $fila->distancia_agua;
                     $lista[] = $obj;
+                }
+
+                return $lista;
+
+            } 
+            catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return null;
+            } finally {
+                Conexion::desconectar();
             }
-
-            return $lista;
-
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage(); // Agrega esto para ver el error
-            return null;
-        } finally {
-            Conexion::desconectar();
         }
-    }
-
     }
 ?>
 
