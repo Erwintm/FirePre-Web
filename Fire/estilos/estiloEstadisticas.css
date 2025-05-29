@@ -5,3 +5,9 @@
     font-weight: bold;
 }
 
+
+#cabeza{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
