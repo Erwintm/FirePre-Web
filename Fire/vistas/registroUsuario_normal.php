@@ -89,7 +89,7 @@
             $resultado = $dao->agregar($usuario);
             if ($resultado > 0) {
                 $_SESSION["msg"] = "alert-success--Usuario almacenado correctamente";
-                header("Location: index_privado.php");
+                header("Location: index_publico.php");
                 exit;
             } else {
                 $error = '<div class="alert alert-danger">Error al guardar el usuario</div>';
