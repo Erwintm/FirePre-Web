@@ -7,12 +7,11 @@
     $fecha_fin = $_GET['fecha_fin'] ?? null;
     $zona = $_GET['zona'] ?? null;
 
-   
-
     if ($fecha_inicio && $fecha_fin && $zona) {
         $listaIncendios = $dao->obtenerTodos($fecha_inicio, $fecha_fin, $zona);
     } else {
-        $listaIncendios = $dao->obtenerTodos(); 
+        $listaIncendios = $dao->obtenerTodos($fecha_inicio ?? null, $fecha_fin ?? null, $zona ?? null);
+
     }
 ?>
 

@@ -80,46 +80,28 @@
             }
         }
 
-        public function obtenerTodos($fechaInicio = null, $fechaFin = null, $zona = null)
+        public function obtenerTodos($fechaInicio, $fechaFin, $idZona)
         {
             try {
                 $this->conectar();
-
+                
                 $lista = array();
-
+                
                 $sql = "SELECT i.id, i.fecha, i.temperatura, i.velocidad_viento, i.elevacion,
-                                i.latitud, i.longitud, i.tipo_vegetacion, i.causas, z.nombre AS id_zona,
-                                i.humedad, i.precipitacion, i.distancia_agua
+                            i.latitud, i.longitud, i.tipo_vegetacion, i.causas, z.nombre AS id_zona,
+                            i.humedad, i.precipitacion, i.distancia_agua
                         FROM Incendios i
                         LEFT JOIN zona z ON i.id_zona = z.id
-                        WHERE 1=1";
-
-               
-                if ($fechaInicio && $fechaFin) {
-                    $sql .= " AND i.fecha BETWEEN :fechaInicio AND :fechaFin";
-                }
-
-                if ($zona) {
-                    $sql .= " AND z.nombre = :zona";
-                }
+                        WHERE i.fecha BETWEEN ? AND ?
+                        AND z.nombre = ?";
 
                 $sentenciaSQL = $this->conexion->prepare($sql);
+                $sentenciaSQL->execute([$fechaInicio, $fechaFin, $idZona]);
 
-                
-                if ($fechaInicio && $fechaFin) {
-                    $sentenciaSQL->bindParam(':fechaInicio', $fechaInicio);
-                    $sentenciaSQL->bindParam(':fechaFin', $fechaFin);
-                }
-
-                if ($zona) {
-                    $sentenciaSQL->bindParam(':zona', $zona);
-                }
-
-                $sentenciaSQL->execute();
                 $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_OBJ);
 
                 foreach ($resultado as $fila) {
-                    $obj = new Incendio();
+                    $obj = new Incendio(); 
                     $obj->id = $fila->id;
                     $obj->fecha = $fila->fecha;
                     $obj->temperatura = $fila->temperatura;
@@ -133,20 +115,22 @@
                     $obj->humedad = $fila->humedad;
                     $obj->precipitacion = $fila->precipitacion;
                     $obj->distancia_agua = $fila->distancia_agua;
+
                     $lista[] = $obj;
                 }
 
-                return $lista;
+                    return $lista;
 
-            } 
-            catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
+            } catch (PDOException $e) {
                 return null;
             } finally {
                 Conexion::desconectar();
             }
+                
         }
-    }
+
+    }   
+
 ?>
 
 
