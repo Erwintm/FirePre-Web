@@ -1,22 +1,3 @@
-function validarFecha(fechaStr) {
-    let regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-    let match = fechaStr.match(regex);
-
-    if (!match) {
-        return false;
-    }
-
-    let dia = parseInt(match[1], 10);
-    let mes = parseInt(match[2], 10) - 1; // Mes es 0-indexado
-    let anio = parseInt(match[3], 10);
-
-    let fecha = new Date(anio, mes, dia);
-    return (
-        fecha.getFullYear() === anio &&
-        fecha.getMonth() === mes &&
-        fecha.getDate() === dia
-    );
-}
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnFiltrar").addEventListener("click", (evento) => {
         let hayErrores = false;
@@ -29,12 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menFecha_inicio.classList.add("invalid");
             fecha_inicio.classList.add("invalid");
             hayErrores = true;
-        } else if (!validarFecha(valfecha_inicio)) {
-            menFecha_inicio.innerText = "Formato de fecha inválido (dd/mm/yyyy)";
-            menFecha_inicio.classList.add("invalid");
-            fecha_inicio.classList.add("invalid");
-            hayErrores = true;
-        } else {
+        }else {
             menFecha_inicio.innerText = "";
             menFecha_inicio.classList.remove("invalid");
             fecha_inicio.classList.remove("invalid");
@@ -48,12 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menFecha_fin.classList.add("invalid");
             fecha_fin.classList.add("invalid");
             hayErrores = true;
-        } else if (!validarFecha(valfecha_fin)) {
-            menFecha_fin.innerText = "Formato de fecha inválido (dd/mm/yyyy)";
-            menFecha_fin.classList.add("invalid");
-            fecha_fin.classList.add("invalid");
-            hayErrores = true;
-        } else {
+        }else {
             menFecha_fin.innerText = "";
             menFecha_fin.classList.remove("invalid");
             fecha_fin.classList.remove("invalid");
