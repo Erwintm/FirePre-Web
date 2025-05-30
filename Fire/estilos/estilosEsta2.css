@@ -1,0 +1,13 @@
+.fondo{
+    background-color: rgba(243, 113, 113, 0.74);
+}
+.invalid{
+    color: red !important;
+    border: 1px red solid !important;
+    outline-color: red !important;
+}
+.valid{
+    
+    border: 1px rgb(4, 233, 4) solid;
+    outline-color: rgb(4, 233, 4);
+}

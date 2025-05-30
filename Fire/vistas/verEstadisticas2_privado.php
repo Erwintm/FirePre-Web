@@ -6,24 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos/estilosEsta2.css">
 </head>
 
 <body class="container mt-4">
+    <nav class="navbar navbar-expand-lg nav-link  " style="background-color: rgb(212, 82, 82);">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#">Navegación</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="infoSoft_privado.php">Información del software</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true" href="verPredicciones_privado.php">Ver predicciones</a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true" href="verEstadisticas_privado.php">Ver estadisticas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
+                    </li>
+
+                    <form action="">
+                        <button class="btn btn-primary" type="submit"  formaction="acceso.php">Cerrar Sesion</button>
+                    </form>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
     <h3>Estadísticas</h3>
     <form id="formFiltro" class="row g-3" method="POST" action="filtroEstadisticas.php">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
             <input type="date" id="fecha_inicio" name="fecha_inicio"
                 value="<?= htmlspecialchars($fecha_inicio ?? '') ?>" class="form-control" required>
         </div>
-
-        <div class="col-md-4">
+        <div id="menFecha_inicio" class="col-md-2"></div>
+        <div class="col-md-2">
             <label for="fecha_fin" class="form-label">Fecha Fin</label>
             <input type="date" id="fecha_fin" name="fecha_fin"
                 value="<?= htmlspecialchars($fecha_fin ?? '') ?>" class="form-control" required>
         </div>
-
-        <div class="col-md-4">
+        <div id="menFecha_fin" class=" col-md-2"></div>
+        <div class="col-md-2">
             <label for="zona" class="form-label">Zona</label>
             <select id="zona" name="zona" class="form-control" required>
                 <option value="1">Uriangato</option>
@@ -34,9 +70,9 @@
                 <option value="6">La Cinta</option>
             </select>
         </div>
-
+        <div id="menZona" class="col-md-2"></div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <button type="submit" id="btnFiltrar" class="btn btn-primary">Filtrar</button>
         </div>
     </form>
 
@@ -77,6 +113,7 @@
     </table>
 
     <script src="../js/cargardatos.js"></script>
+    <script src="../js/valEstadisticas2.js"></script>
 </body>
 
 </html>
