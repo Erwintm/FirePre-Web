@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dao = new DaoEstadisticas();
 
     $causas = $dao->obtenerCausasComunes($zona, $fechaInicio, $fechaFin);
-    $zonas = $dao->obtenerZonasMaxInc($fechaInicio, $fechaFin);
-    $vegetacion = $dao->obtenerIncVegetacion($fechaInicio, $fechaFin);
+    $zonas = $dao->obtenerZonasMaxInc($zona,$fechaInicio, $fechaFin);
+    $vegetacion = $dao->obtenerIncVegetacion($zona,$fechaInicio, $fechaFin);
     header('Content-Type: application/json');
     echo json_encode([
         'causas' => $causas,
