@@ -142,19 +142,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['fecha_inicio']) || iss
         <tbody>
           <?php if (!empty($listaIncendios) && is_array($listaIncendios)): ?>
             <?php foreach ($listaIncendios as $i): ?>
-              <tr>
-                <td><?= htmlspecialchars($i->fecha) ?></td>
-                <td><?= htmlspecialchars($i->temperatura) ?> °C</td>
-                <td><?= htmlspecialchars($i->velocidad_viento) ?> km/h</td>
-                <td><?= htmlspecialchars($i->elevacion) ?> m</td>
-                <td><?= htmlspecialchars($i->latitud) ?></td>
-                <td><?= htmlspecialchars($i->longitud) ?></td>
-                <td><?= htmlspecialchars($i->tipo_vegetacion) ?></td>
-                <td><?= htmlspecialchars($i->causas) ?></td>
-                <td><?= htmlspecialchars($i->id_zona) ?></td>
-                <td><?= htmlspecialchars($i->humedad) ?>%</td>
-                <td><?= htmlspecialchars($i->precipitacion) ?> mm</td>
-                <td><?= htmlspecialchars($i->distancia_agua) ?> m</td>
+               <tr>
+                <td><?= $i->fecha ?></td>
+                <td><?= $i->temperatura ?> °C</td>
+                <td><?=$i->velocidad_viento ?> km/h</td>
+                <td><?= $i->elevacion ?> m</td>
+                <td><?= $i->latitud ?></td>
+                <td><?= $i->longitud ?></td>
+                <td><?= $i->tipo_vegetacion ?></td>
+                <td><?= $i->causas ?></td>
+                <td><?= $i->id_zona ?></td>
+                <td><?= $i->humedad ?>%</td>
+                <td><?= $i->precipitacion ?> mm</td>
+                <td><?= $i->distancia_agua ?> m</td>
               </tr>
             <?php endforeach; ?>
           <?php else: ?>
