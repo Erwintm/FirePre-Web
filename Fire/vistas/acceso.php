@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
     require_once("../datos/DAOUsuario.php");
 
     $correo = $password = $error = "";
@@ -15,8 +15,7 @@
             $usuario = $dao->autenticar($correo, $password);
 
             if ($usuario) {
-                $_SESSION["correo"] = $correo;
-                $_SESSION["super"] = $usuario->super;
+                
 
                 if ($usuario->super==1) {
                     header("Location: index_privado.php");

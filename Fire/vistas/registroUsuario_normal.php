@@ -65,7 +65,7 @@
             $usuario->sexo = "Femenino";
         }
 
-        // Validaciones
+        //yajir aqui estan las validaciones
         $error .= validarCadena($usuario->nombre, 3, 30, "Nombre");
         $error .= validarCadena($usuario->apellidos, 3, 30, "Apellidos");
 
@@ -83,7 +83,7 @@
 
 
 
-        // Procesamiento si no hay errores
+        
         if (empty($error)) {
             $dao = new DAOUsuario();
             $resultado = $dao->agregar($usuario);
@@ -132,7 +132,7 @@
                     <input type="password" id="txtContrasena" name="txtContrasena" class="form-control" minlength="8" maxlength="25" required>
                 </div>
                 <div id="menPass"></div>
-                <!-- Campo Sexo -->
+                
                 <div class="mb-3 col-md-6">
                     <fieldset class="border rounded p-3">
                         <legend class="fs-6">Sexo</legend>
@@ -147,7 +147,7 @@
                     </fieldset>
                 </div>
                 <div id="menSexo"></div>
-                <!-- Campo Tipo de Usuario -->
+                
                 
                 <div id="menTipo"></div>
                 <div class="col-12 text-center mt-4">

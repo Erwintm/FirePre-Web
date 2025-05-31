@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let menPass = document.getElementById("menPass");
         if (pass.validity.valueMissing || pass.value.length < 8 || pass.value.length > 25) {
             menPass.innerText = "La contraseña debe tener entre 8 y 25 caracteres";
-            menApe.classList.add("invalid");
+            menPass.classList.add("invalid");
             pass.classList.add("invalid");
             hayErrores = true;
         } else {

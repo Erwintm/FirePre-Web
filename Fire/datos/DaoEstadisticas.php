@@ -10,7 +10,7 @@ class DaoEstadisticas
         try {
             $this->conexion = Conexion::conectar();
         } catch (Exception $e) {
-            die($e->getMessage()); /*Si la conexion no se establece se cortara el flujo enviando un mensaje con el error*/
+            die($e->getMessage());
         }
     }
     public function obtenerCausasComunes($zona, $fechaInicio, $fechaFin){

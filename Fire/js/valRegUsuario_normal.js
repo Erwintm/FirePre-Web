@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // Si hay errores, cancelar envío
+        
         if (hayErrores) {
             evento.preventDefault();
         }

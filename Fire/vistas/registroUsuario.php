@@ -73,11 +73,14 @@
         $usuario->gmail      = trim($_POST["txtEmail"] ?? '');
         $usuario->password   = $_POST["txtContrasena"] ?? '';
 
-        if ($_POST["rbtTipo"] == "normal") {
-            $usuario->super = 2;
-        } else if ($_POST["rbtTipo"] == "administrador") {
-            $usuario->super = 1;
-        }
+        if (isset($_POST["rbtTipo"])) {
+     if ($_POST["rbtTipo"] == "normal") {
+        $usuario->super = 2;
+     } else if ($_POST["rbtTipo"] == "administrador") {
+        $usuario->super = 1;
+     }
+}
+
 
 
 
@@ -154,7 +157,7 @@
                     <input type="password" id="txtContrasena" name="txtContrasena" class="form-control" minlength="8" maxlength="25" required>
                 </div>
                 <div id="menPass"></div>
-                <!-- Campo Sexo -->
+               
                 <div class="mb-3 col-md-6">
                     <fieldset class="border rounded p-3">
                         <legend class="fs-6">Sexo</legend>
@@ -169,7 +172,7 @@
                     </fieldset>
                 </div>
                 <div id="menSexo"></div>
-                <!-- Campo Tipo de Usuario -->
+                
                 <div class="mb-3 col-md-6">
                     <fieldset class="border rounded p-3">
                         <legend class="fs-6">Tipo usuario</legend>
@@ -178,7 +181,7 @@
                             <label for="rbtAdmin" class="form-check-label">Administrador</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="rbtNormal" name="rbtTipo" value="normal" class="form-check-input" required>
+                            <input type="radio" id="rbtNormal" name="rbtTipo" value="normal" class="form-check-input" required >
                             <label for="rbtNormal" class="form-check-label">Normal</label>
                         </div>
                     </fieldset>

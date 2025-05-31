@@ -5,11 +5,11 @@ $dao = new DAOIncendio();
 $error = "";
 $listaIncendios = [];
 
-$fecha_inicio = $_GET['fecha_inicio'] ?? null;
-$fecha_fin = $_GET['fecha_fin'] ?? null;
-$zona = $_GET['zona'] ?? null;
+$fecha_inicio = $_POST['fecha_inicio'] ?? null;
+$fecha_fin = $_POST['fecha_fin'] ?? null;
+$zona = $_POST['zona'] ?? null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['fecha_inicio']) || isset($_GET['fecha_fin']) || isset($_GET['zona']))) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['fecha_inicio']) || isset($_POST['fecha_fin']) || isset($_POST['zona']))) {
     if (empty($fecha_inicio)) {
         $error .= "Por favor ingresa una fecha de inicio.<br>";
     }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['fecha_inicio']) || iss
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
+   <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
   <div class="container-fluid ">
     <a class="navbar-brand" href="#">Navegación</a>
     
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['fecha_inicio']) || iss
   </div>
 
   <div class="container mt-4" style="max-width: 450px;">
-    <form method="get" action="" novalidate class="row g-3 align-items-center" id="formv">
+    <form method="POST" action="" novalidate class="row g-3 align-items-center" id="formv">
       <div class="col-12">
         <legend>Filtrar incendios</legend>
       </div>
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['fecha_inicio']) || iss
         <tbody>
           <?php if (!empty($listaIncendios) && is_array($listaIncendios)): ?>
             <?php foreach ($listaIncendios as $i): ?>
-              <tr>
+               <tr>
                 <td><?= $i->fecha ?></td>
                 <td><?= $i->temperatura ?> °C</td>
                 <td><?=$i->velocidad_viento ?> km/h</td>

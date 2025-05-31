@@ -1,9 +1,9 @@
 document.getElementById("formFiltro").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const zona = document.getElementById("zona").value;
-    const fechaInicio = document.getElementById("fecha_inicio").value;
-    const fechaFin = document.getElementById("fecha_fin").value;
+    let zona = document.getElementById("zona").value;
+    let fechaInicio = document.getElementById("fecha_inicio").value;
+    let fechaFin = document.getElementById("fecha_fin").value;
 
     fetch("../vistas/filtroEstadisticas.php", {
         method: "POST",
@@ -15,17 +15,17 @@ document.getElementById("formFiltro").addEventListener("submit", function (e) {
         .then(response => response.json())
         .then(data => {
             // Tabla de causas
-            const tbodyCausas = document.querySelector("#tblCausas tbody");
+            let tbodyCausas = document.querySelector("#tblCausas tbody");
             tbodyCausas.innerHTML = "";
 
             data.causas.forEach(item => {
-                const fila = document.createElement("tr");
+                let fila = document.createElement("tr");
 
-                const celdaCausa = document.createElement("td");
+                let celdaCausa = document.createElement("td");
                 celdaCausa.innerText = item.causas;
                 fila.appendChild(celdaCausa);
 
-                const celdaTotal = document.createElement("td");
+                let celdaTotal = document.createElement("td");
                 celdaTotal.innerText = item.total;
                 fila.appendChild(celdaTotal);
 
@@ -33,16 +33,16 @@ document.getElementById("formFiltro").addEventListener("submit", function (e) {
             });
 
             // Tabla de zonas
-            const tbodyZonas = document.querySelector("#tblZonas tbody");
+            let tbodyZonas = document.querySelector("#tblZonas tbody");
             tbodyZonas.innerHTML = "";
 
             data.zonas.forEach(item => {
-                const fila = document.createElement("tr");
+                let fila = document.createElement("tr");
 
-                const celdaZona = document.createElement("td");
+                let celdaZona = document.createElement("td");
                 celdaZona.innerText = item.zona;
 
-                const celdaTotal = document.createElement("td");
+                let celdaTotal = document.createElement("td");
                 celdaTotal.innerText = item.total;
 
                 fila.appendChild(celdaZona);
@@ -51,16 +51,16 @@ document.getElementById("formFiltro").addEventListener("submit", function (e) {
                 tbodyZonas.appendChild(fila);
             });
             // Tabla de vegetación
-            const tbodyVegetacion = document.querySelector("#tblVeg tbody");
+            let tbodyVegetacion = document.querySelector("#tblVeg tbody");
             tbodyVegetacion.innerHTML = "";
 
             data.vegetacion.forEach(item => {
-                const fila = document.createElement("tr");
+                let fila = document.createElement("tr");
 
-                const celdaVeg = document.createElement("td");
+                let celdaVeg = document.createElement("td");
                 celdaVeg.innerText = item.tipo_vegetacion; 
 
-                const celdaTotal = document.createElement("td");
+                let celdaTotal = document.createElement("td");
                 celdaTotal.innerText = item.total;
 
                 fila.appendChild(celdaVeg);

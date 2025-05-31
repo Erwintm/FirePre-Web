@@ -50,13 +50,13 @@
         <div class="col-md-2">
             <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
             <input type="date" id="fecha_inicio" name="fecha_inicio"
-                value="<?= htmlspecialchars($fecha_inicio ?? '') ?>" class="form-control" required>
+                value="<?= $fecha_inicio ?? '' ?>" class="form-control" required>
         </div>
         <div id="menFecha_inicio" class="col-md-2"></div>
         <div class="col-md-2">
             <label for="fecha_fin" class="form-label">Fecha Fin</label>
             <input type="date" id="fecha_fin" name="fecha_fin"
-                value="<?= htmlspecialchars($fecha_fin ?? '') ?>" class="form-control" required>
+                value="<?= $fecha_fin ?? '' ?>" class="form-control" required>
         </div>
         <div id="menFecha_fin" class=" col-md-2"></div>
         <div class="col-md-2">
@@ -82,7 +82,7 @@
         <thead>
             <tr>
                 <th>Causa</th>
-                <th>Total de Incendios</th>
+                <th>Total de causas</th>
             </tr>
         </thead>
         <tbody>
@@ -104,7 +104,7 @@
         <thead>
             <tr>
                 <th>Vegetacion</th>
-                <th>Total de Incendios</th>
+                <th>Total de Incendios por vegetacion</th>
             </tr>
         </thead>
         <tbody>

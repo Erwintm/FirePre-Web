@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
    
     const botonFiltrar = document.getElementById("filtrar");
+    const form=document.getElementById("formv");
 
     botonFiltrar.addEventListener("click", (e) => {
 
-         const fechaInicio = document.getElementById("fecha_inicio");
+    const fechaInicio = document.getElementById("fecha_inicio");
     const fechaFin = document.getElementById("fecha_fin");
     const zona = document.getElementById("zona");
         e.preventDefault();
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (valido) {
-            e.target.closest("form").submit();
+            form.submit();
         }
     });
 
