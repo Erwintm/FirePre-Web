@@ -9,21 +9,41 @@
 </head>
 
 <body class="fondo">
-    <nav class="navbar navbar-expand-lg nav-link" style="background-color: rgb(212, 82, 82);">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navegación</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="infoSoft_privado.php">Información del software</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="verPredicciones_privado.php">Ver predicciones</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="verEstadisticas_privado.php">Ver estadísticas</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="registroUsuario.php">Registrar Usuarios</a></li>
-                    <form action=""><button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesión</button></form>
-                </ul>
-            </div>
-        </div>
-    </nav>
+     <nav class="navbar navbar-expand-lg nav-link  "  style="background-color: rgb(212, 82, 82);">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="#">Navegación</a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="infoSoft_privado.php">Información del software</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link active" aria-disabled="true" href="verPredicciones_privado.php">Ver predicciones</a>
+         
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-disabled="true" href="verEstadisticas_privado.php">Ver estadisticas</a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active" href="registrarIncendio.php">Registro de incendios</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" aria-disabled="true" href="listaUsuarios.php">Gestionar Usuarios</a>
+        </li>
+    
+        <form action="">
+          <button class="btn btn-primary" type="submit" formaction="acceso.php">Cerrar Sesion</button>
+        </form>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
     <?php
     require_once '../modelos/usuario.php';
