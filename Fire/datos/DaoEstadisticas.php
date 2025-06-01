@@ -34,7 +34,7 @@ class DaoEstadisticas
             ]);
 
             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $lista[] = $fila; // Puedes mapearlo a un objeto si prefieres
+                $lista[] = $fila; 
             }
 
             return $lista;
