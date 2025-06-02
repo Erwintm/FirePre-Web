@@ -6,15 +6,17 @@ class DaoEstadisticas
 
     private $conexion;
 
-    private function conectar(){
+    private function conectar()
+    {
         try {
             $this->conexion = Conexion::conectar();
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-    public function obtenerCausasComunes($zona, $fechaInicio, $fechaFin){
-        
+    public function obtenerCausasComunes($zona, $fechaInicio, $fechaFin)
+    {
+
         try {
             $this->conectar();
             $lista = [];
@@ -34,7 +36,7 @@ class DaoEstadisticas
             ]);
 
             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $lista[] = $fila; 
+                $lista[] = $fila;
             }
 
             return $lista;
@@ -44,12 +46,13 @@ class DaoEstadisticas
             Conexion::desconectar();
         }
     }
-    public function obtenerZonasMaxInc($zona,$fechaInicio, $fechaFin){
-           
+    public function obtenerZonasMaxInc($zona, $fechaInicio, $fechaFin)
+    {
+
         try {
             $this->conectar();
             $lista = [];
-           
+
 
             $sql = "SELECT z.nombre AS zona, COUNT(*) AS total
                     FROM incendios i
@@ -68,7 +71,7 @@ class DaoEstadisticas
             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $lista[] = $fila;
             }
-            
+
             return $lista;
         } catch (Exception $e) {
             return [];
@@ -76,34 +79,65 @@ class DaoEstadisticas
             Conexion::desconectar();
         }
     }
-    public function obtenerIncVegetacion($zona,$fechaInicio, $fechaFin) {
-    try {
-        $this->conectar();
-        $lista = [];
+    public function obtenerIncVegetacion($zona, $fechaInicio, $fechaFin)
+    {
+        try {
+            $this->conectar();
+            $lista = [];
 
-        $sql = "SELECT tipo_vegetacion, COUNT(*) AS total
+            $sql = "SELECT tipo_vegetacion, COUNT(*) AS total
                 FROM incendios
                 WHERE id_zona = :zona AND fecha BETWEEN :inicio AND :fin
                 GROUP BY tipo_vegetacion
                 ORDER BY total DESC;";
 
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->execute([
-            ':zona' => $zona,
-            ':inicio' => $fechaInicio,
-            ':fin' => $fechaFin
-        ]);
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute([
+                ':zona' => $zona,
+                ':inicio' => $fechaInicio,
+                ':fin' => $fechaFin
+            ]);
 
-        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $lista[] = $fila;
+            while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lista[] = $fila;
+            }
+
+            return $lista;
+        } catch (Exception $e) {
+            return [];
+        } finally {
+            Conexion::desconectar();
         }
-        
-        return $lista;
-    } catch (Exception $e) {
-        return [];
-    } finally {
-        Conexion::desconectar();
     }
-}
+    public function IncZonaMes($zona, $fechaInicio, $fechaFin)
+    {
+        try {
+            $this->conectar();
+            $lista = [];
 
+            $sql = "SELECT z.nombre AS zona,EXTRACT(MONTH FROM i.fecha) AS mes,EXTRACT(YEAR FROM i.fecha) AS anio,COUNT(*) AS total
+                    FROM incendios i
+                    JOIN zona z ON i.id_zona = z.id
+                    WHERE id_zona = :zona AND fecha BETWEEN :inicio AND :fin
+                    GROUP BY z.nombre, EXTRACT(MONTH FROM i.fecha),EXTRACT(YEAR FROM i.fecha)
+                    ORDER BY z.nombre, mes,anio;";
+
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute([
+                ':zona' => $zona,
+                ':inicio' => $fechaInicio,
+                ':fin' => $fechaFin
+            ]);
+
+            while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lista[] = $fila;
+            }
+
+            return $lista;
+        } catch (Exception $e) {
+            return [];
+        } finally {
+            Conexion::desconectar();
+        }
+    }
 }

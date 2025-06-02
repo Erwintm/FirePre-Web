@@ -7,6 +7,7 @@ $error = "";
 $causas = [];
 $zonas = [];
 $vegetacion = [];
+$zonaMes=[];
 
 $fecha_inicio = $_POST['fecha_inicio'] ?? null;
 $fecha_fin = $_POST['fecha_fin'] ?? null;
@@ -42,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['fecha_inicio']) || i
         $causas = $dao->obtenerCausasComunes($zona, $fecha_inicio, $fecha_fin);
         $zonas = $dao->obtenerZonasMaxInc($zona, $fecha_inicio, $fecha_fin);
         $vegetacion = $dao->obtenerIncVegetacion($zona, $fecha_inicio, $fecha_fin);
+        $zonaMes=$dao->IncZonaMes($zona, $fecha_inicio, $fecha_fin);
+        
     }
 }
 ?>
@@ -212,6 +215,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['fecha_inicio']) || i
             <?php endforeach; ?>
           <?php else: ?>
             <tr><td colspan="2">No hay datos para mostrar</td></tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
+      <!-- Tabla de Zona mes y año-->
+      <table class="table table-bordered table-striped table-hover align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Zona</th>
+            <th>Mes</th>
+            <th>Año</th>
+            <th>Total de incendios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if (!empty($zonaMes) && is_array($zonaMes)): ?>
+            <?php foreach ($zonaMes as $i): ?>
+              <tr>
+                <td><?= $i['zona'] ?></td>
+                <td><?= $i['mes'] ?></td>
+                <td><?= $i['anio'] ?></td>
+                <td><?= $i['total'] ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr><td colspan="4">No hay datos para mostrar</td></tr>
           <?php endif; ?>
         </tbody>
       </table>
